@@ -1,1 +1,1 @@
-# faw_group_04
+# Project for Frameworks and Architectures for the Web, MSc; Group04
