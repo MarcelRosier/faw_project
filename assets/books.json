@@ -1,12 +1,72 @@
 [
   {
+    "title": "Chaos: Making a New Science",
     "author": "James Gleick",
     "imageLink": "assets/imgs/chaos.png",
     "language": "English",
     "pages": 400,
-    "title": "Chaos: Making a New Science",
     "year": 1987,
-    "genre": "non-fiction",
+    "genre": "science",
     "description": "Chaos: Making a New Science is a debut non-fiction book by James Gleick that initially introduced the principles and early development of the chaos theory to the public. It was a finalist for the National Book Award and the Pulitzer Prize in 1987, and was shortlisted for the Science Book Prize in 1989. The book was published on October 29, 1987 by Viking Books."
+  },
+  {
+    "title": "The Stranger",
+    "author": "Albert Camus",
+    "imageLink": "assets/imgs/the_stranger.jpg",
+    "language": "English",
+    "pages": 159,
+    "year": 1942,
+    "genre": "novel",
+    "description": "The Stranger (French: L'Étranger), also published in English as The Outsider, is a 1942 novella by French author Albert Camus. Its theme and outlook are often cited as examples of Camus' philosophy, absurdism, coupled with existentialism; though Camus personally rejected the latter label."
+  },
+  {
+    "title": "Vom Ende der Einsamkeit",
+    "author": "Benedict Wells",
+    "imageLink": "assets/imgs/vom_ende_der_einsamkeit.jpeg",
+    "language": "German",
+    "pages": 463,
+    "year": 2016,
+    "genre": "novel",
+    "description": "The End of Loneliness (Vom Ende der Einsamkeit) is a 2016 German novel by Benedict Wells. It was published in February 2016 by Diogenes Verlag. It remained on the German bestseller list for more than 80 weeks. The English version was translated by Charlotte Collins and published in 2018 by Sceptre. It was Wells' first book to be translated into English."
+  },
+  {
+    "title": "Utopia for Realists",
+    "author": "Rutger Bregman",
+    "imageLink": "assets/imgs/utopia-for-realists.jpeg",
+    "language": "English",
+    "pages": 288,
+    "year": 2014,
+    "genre": "science",
+    "description": "Utopia for Realists: The Case for a Universal Basic Income, Open Borders, and a 15-hour Workweek (alternatively subtitled And How We Can Get There and How We Can Build the Ideal World) is a book by Dutch popular historian Rutger Bregman. It was originally written as articles in Dutch for a virtual journal, De Correspondent, and was since compiled and published, and translated into several languages. It offers a critical proposal that it claims is a practical approach to reconstructing modern society to promote a more productive and equitable life based on three core ideas:  universal and unconditional basic income paid to everybody, a short working week of fifteen hours and open borders worldwide with the free movement of citizens between all states"
+  },
+  {
+    "title": "The Myth of Sisyphus",
+    "author": "Albert Camus",
+    "imageLink": "assets/imgs/the_myth_of_sisyphus.jpeg",
+    "language": "English",
+    "pages": 166,
+    "year": 1942,
+    "genre": "essay",
+    "description": "The Myth of Sisyphus (French: Le mythe de Sisyphe) is a 1942 philosophical essay by Albert Camus. Influenced by philosophers such as Søren Kierkegaard, Arthur Schopenhauer, and Friedrich Nietzsche, Camus introduces his philosophy of the absurd. The absurd lies in the juxtaposition between the fundamental human need to attribute meaning to life and the 'unreasonable silence' of the universe in response."
+  },
+  {
+    "title": "Alan Turing: The Enigma",
+    "author": "Andrew Hodges",
+    "imageLink": "assets/imgs/alan_turing_the_enigma.jpeg",
+    "language": "English",
+    "pages": 587,
+    "year": 1983,
+    "genre": "biography",
+    "description": "Alan Turing: The Enigma (1983) is a biography of the British mathematician, codebreaker, and early computer scientist, Alan Turing (1912–1954) by Andrew Hodges. The book covers Alan Turing's life and work. The 2014 film The Imitation Game is loosely based on the book, with dramatization."
+  },
+  {
+    "title": "A Beautiful Mind ",
+    "author": "Sylvia Nasar",
+    "imageLink": "assets/imgs/a_beautiful_mind.jpeg",
+    "language": "English",
+    "pages": 460,
+    "year": 1998,
+    "genre": "biography",
+    "description": "A Beautiful Mind (1998) is a biography of Nobel Prize-winning economist and mathematician John Forbes Nash Jr. by Sylvia Nasar, professor of journalism at Columbia University. An unauthorized work, it won the National Book Critics Circle Award in 1998 and was nominated for the Pulitzer Prize in biography. The book was later adapted into the film by the same name in 2001 directed by Ron Howard and starring Russell Crowe as Nash."
   }
 ]
