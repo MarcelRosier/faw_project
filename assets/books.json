@@ -1,11 +1,12 @@
 [
-    {
-      "author": "James Gleick",
-      "imageLink": "assets/imgs/chaos.png",
-      "language": "English",
-      "pages": 400,
-      "title": "Chaos: Making a New Science",
-      "year": 1987
-    }
-  ]
-  
+  {
+    "author": "James Gleick",
+    "imageLink": "assets/imgs/chaos.png",
+    "language": "English",
+    "pages": 400,
+    "title": "Chaos: Making a New Science",
+    "year": 1987,
+    "genre": "non-fiction",
+    "description": "Chaos: Making a New Science is a debut non-fiction book by James Gleick that initially introduced the principles and early development of the chaos theory to the public. It was a finalist for the National Book Award and the Pulitzer Prize in 1987, and was shortlisted for the Science Book Prize in 1989. The book was published on October 29, 1987 by Viking Books."
+  }
+]
