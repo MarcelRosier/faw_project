@@ -11,16 +11,35 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <script src="/src/utils.js"></script>
   </head>
   <body>
     <header>
       <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"> Webshop </a>
+        <a class="navbar-brand" href="#"> Book World </a>
         <a class="navbar navbar-dark" href="#Cart">Cart</a>
-        <a href="/src/login.html">Login</a>
+        <p class="navbar navbar-text" id="nav_p"></p>
+        <a class="navbar navbar-dark" href="/src/login.html" id="login"
+          >Login</a
+        >
       </nav>
     </header>
     <section></section>
     <footer></footer>
+    <script>
+      window.onload = function () {
+        login = document.getElementById("login");
+        nav_p = document.getElementById("nav_p");
+        activeUser = getActiveUser();
+        if (activeUser !== undefined) {
+          nav_p.innerHTML = "Logged in as " + activeUser.firstName;
+          login.innerHTML = "Logout";
+          login.href = "";
+          login.onclick = function () {
+            setActiveUser();
+          };
+        }
+      };
+    </script>
   </body>
 </html>
