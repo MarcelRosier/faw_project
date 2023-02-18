@@ -12,6 +12,7 @@
       crossorigin="anonymous"
     />
     <script src="/src/utils.js"></script>
+    <script src="/src/generator.js"></script>
   </head>
   <body>
     <header>
@@ -33,10 +34,16 @@
         >
       </nav>
     </header>
-    <section></section>
+    <section id>
+      <!-- Book content -->
+      <div class="row" id="main_content_row"></div>
+    </section>
     <footer></footer>
     <script>
       window.onload = function () {
+        //load book data
+        generateContent();
+        // check if user is logged in
         login = document.getElementById("login");
         nav_p = document.getElementById("nav_p");
         activeUser = getActiveUser();
