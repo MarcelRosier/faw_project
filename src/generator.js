@@ -28,7 +28,7 @@ function generateCard(book) {
   //   add content and attributes
   outerDiv.setAttribute(
     "class",
-    "col-lg-3 col-md-4 col-5 d-flex align-items-stretch"
+    "col-lg-2 col-md-3 col-4 d-flex align-items-stretch"
   );
   cardDiv.setAttribute("class", "card");
   img.setAttribute("class", "card-img-top");
