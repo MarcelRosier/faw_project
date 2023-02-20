@@ -11,23 +11,20 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/src/index.css" />
   </head>
   <body>
-    <div
-      class="d-flex justify-content-left align-items-center"
-      style="
-        height: 100vh;
-        background-image: url(https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg);
-      "
-    >
-      <div class="col p-2">
-        <div style="margin-left: 10%">
-          <h1 class="display-3" style="color: white">Welcome to our page</h1>
-          <a class="btn btn-outline-light m-3" href="/src/shop.html"
-            >Start shopping</a
-          >
-        </div>
-      </div>
-    </div>
+    <header>
+      <section class="hero-header">
+        <h1 class="display-2">{BookStoreName}</h1>
+        <p class="lead" style="font-size: 4vh; font-style: italic">
+          Explore endless worlds, <br />
+          one <strong>book</strong> at a time.
+        </p>
+        <a class="btn btn-outline-light btn-lg m-3" href="/src/shop.html"
+          >Start exploring</a
+        >
+      </section>
+    </header>
   </body>
 </html>
