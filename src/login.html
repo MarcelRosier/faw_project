@@ -14,42 +14,54 @@
     />
   </head>
   <body>
-    <section class="container">
-      <h1 class="text-center">Login</h1>
+    <section class="container w-80">
+      <h3 class="display-3 my-4" style="text-align: center">
+        The largest community of book enthusiasts
+      </h3>
+      <section class="mw-75 m-auto" style="margin-top: 10%">
+        <h5>Login</h3>
+        <form id="login_form" action="/src/shop.html">
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input
+              type="email"
+              id="email_input"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Incorrect password or unkown email</div>
+            <label class="form-label" for="email_label">Email address</label>
+          </div>
 
-      <form id="login_form" action="/src/index.html">
-        <!-- Email input -->
-        <div class="form-outline mb-4">
-          <input type="email" id="email_input" class="form-control" required />
-          <label class="form-label" for="email_label">Email address</label>
-        </div>
-
-        <!-- Password input -->
-        <div class="form-outline mb-4">
-          <input
-            type="password"
-            id="password_input"
-            class="form-control"
-            required
-          />
-          <label class="form-label" for="password_label">Password</label>
-        </div>
-        <p style="color: red" id="login_error_p" hidden>Invalid Credentials</p>
-
-        <!-- Submit button -->
-        <button
-          type="submit"
-          class="btn btn-dark btn-block mb-4"
-          onclick="login(event)"
-        >
-          Sign in
-        </button>
-
-        <!-- Register buttons -->
-        <div class="text-center">
-          <p>Not a member? <a href="/src/register.html">Register</a></p>
-        </div>
-      </form>
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <input
+              type="password"
+              id="password_input"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Incorrect password or unkown email</div>
+            <label class="form-label" for="password_label">Password</label>
+          </div>
+          <div class="d-flex align-items-center justify-content-center">
+              <!-- Submit button -->
+            <button
+            type="submit"
+            class="btn btn-primary btn-block mb-4 w-50"
+            onclick="login(event)"
+            >
+            Log in
+            </button>
+          </div>
+            
+            
+            <!-- Register buttons -->
+            <div class="text-center">
+              <p>Not a member? <a href="/src/register.html">Register</a></p>
+            </div>
+        </form>
+      </section>
     </section>
   </body>
 </html>
