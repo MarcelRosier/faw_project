@@ -1,0 +1,12 @@
+header {
+    height: 100vh;
+    max-width: 100%;
+    text-align: center;
+    padding-top: 35vh;
+    color: white;
+    overflow: hidden;
+    background: black;  /* fallback for old browsers */
+    background: radial-gradient(#FFFFFF00,#2c3e50DD),url(https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg);  /* Chrome 10-25, Safari 5.1-6 */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
