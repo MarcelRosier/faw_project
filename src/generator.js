@@ -16,6 +16,8 @@ function generateCard(book) {
   img = document.createElement("img");
   cardBodyDiv = document.createElement("div");
   cardTitleH5 = document.createElement("h5");
+  authorNameP = document.createElement("p");
+  bookPrice = document.createElement("p");
   addButton = document.createElement("button");
 
   // create Hierarchy
@@ -23,12 +25,14 @@ function generateCard(book) {
   cardDiv.append(img);
   cardDiv.append(cardBodyDiv);
   cardBodyDiv.append(cardTitleH5);
+  cardBodyDiv.append(authorNameP);
+  cardBodyDiv.append(bookPrice);
   cardBodyDiv.append(addButton);
 
   //   add content and attributes
   outerDiv.setAttribute(
     "class",
-    "col-lg-2 col-md-3 col-4 d-flex align-items-stretch"
+    "col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex align-items-stretch"
   );
   cardDiv.setAttribute("class", "card");
   img.setAttribute("class", "card-img-top");
@@ -36,7 +40,11 @@ function generateCard(book) {
   cardBodyDiv.setAttribute("class", "card-body");
   cardTitleH5.setAttribute("class", "card-title");
   cardTitleH5.innerHTML = book.title;
-  addButton.setAttribute("class", "btn btn-dark");
+  authorNameP.setAttribute("class", "card-text")
+  authorNameP.innerHTML = book.author;
+  bookPrice.setAttribute("class", "card-text")
+  bookPrice.innerHTML = book.price;
+  addButton.setAttribute("class", "btn btn-primary col-12");
   addButton.innerHTML = "Add to cart";
 
   // add to row

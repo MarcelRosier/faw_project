@@ -13,11 +13,14 @@
     />
     <script src="/src/utils.js" text="application/javascript"></script>
     <script src="/src/generator.js" text="application/javascript"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/reset.css">
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+      <nav class="navbar navbar-light bg-light">
+        <div>
+          <a class="navbar-brand" href="/src/index.html">
           <img
             src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png"
             width="30"
@@ -27,14 +30,38 @@
           />
           Book World
         </a>
-        <a class="navbar navbar-dark" href="#Cart">Cart</a>
-        <p class="navbar navbar-text" id="nav_p"></p>
-        <a class="navbar navbar-dark" href="/src/login.html" id="login"
-          >Login</a
-        >
+        <p class="navbar navbar-text " id="nav_p"></p>
+        </div>
+        <a class="navbar navbar-light float-right" href="/src/shop.html">Shop</a>
+        <a class="navbar navbar-light float-right" href="/src/checkout.html">Cart</a>
+        <a class="navbar navbar-light float-right" href="/src/login.html" id="login">Login</a>
+
+<!--         Not added functionality for the 2 buttons  -->
+<!--           <button type="button"  href="/src/login.html" id="login" class="btn btn-light">Login</button>
+          <button type="button" href="/src/login.html" class="btn btn-primary">Register</button> -->
+
+          <ul class="navbar-nav mr-auto">
       </nav>
     </header>
-    <section id>
+    <div class="shop-headers">
+      <h1>Shop</h1>
+      <h3>Explore our book selection</h3>
+    </div>
+    <div class="filters">
+      <div class="filter">
+      <h3>Author</h3>      
+        <div><input type="checkbox" name="language" value="english" id="english"><label for="english">English</label></div>
+        <div><input type="checkbox" name="language" value="german" id="german"><label for="german">German</label></div>
+      </div>
+      <div class="filter">
+      <h3>Genre</h3>      
+        <div><input type="checkbox" name="genre" value="science" id="science"><label for="science">Science</label></div>
+        <div><input type="checkbox" name="genre" value="novel" id="novel"><label for="novel">Novel</label></div>
+        <div><input type="checkbox" name="genre" value="essay" id="essay"><label for="essay">Essay</label></div>
+        <div><input type="checkbox" name="genre" value="biography" id="biography"><label for="biography">Biography</label></div>
+      </div>
+    </div>
+    <section class="section-shop"">
       <!-- Book content -->
       <div class="row" id="main_content_row"></div>
     </section>
