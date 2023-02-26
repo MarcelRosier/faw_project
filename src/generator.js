@@ -8,6 +8,16 @@ async function generateContent() {
     generateCard(book);
   }
 }
+/* Add book to cart */
+function addToCart(book) {
+  console.log("book:", book);
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  console.log("cart before:", cart);
+  cart.push(book);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  console.log("cart after:", cart);
+  alert(`${book.title} added to cart!`);
+}
 
 function generateCard(book) {
   // Init
@@ -19,6 +29,10 @@ function generateCard(book) {
   authorNameP = document.createElement("p");
   bookPrice = document.createElement("p");
   addButton = document.createElement("button");
+/* add book Event listener to button */
+  addButton.onclick = function() {
+    addToCart(book);
+  };
 
   // create Hierarchy
   outerDiv.append(cardDiv);
