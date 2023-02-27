@@ -17,6 +17,18 @@ function displayCart() {
     emptyCart.innerHTML = "Wow, so much empty!";
     cartContent.append(emptyCart);
   }
+
+  // caclculate total rice
+  calculateTotalPrice(cart);
+}
+
+function calculateTotalPrice(cart) {
+  let items = Array.from(cart.values());
+  let total = items.reduce(
+    (acc, item) => acc + +item.book.price * +item.quantity,
+    0
+  );
+  document.getElementById("grand-total").innerHTML = `${total.toFixed(2)}$`;
 }
 
 function generateCartRow(item) {
@@ -64,7 +76,7 @@ function generateCartRow(item) {
   bookDetailsAuthor.innerHTML = book.author;
 
   bookPrice.className = "book-price";
-  bookPrice.innerHTML = book.price;
+  bookPrice.innerHTML = `${book.price}$`;
 
   bookQuantity.className = "book-quantity";
   bookQuantityInput.type = "number";
@@ -76,7 +88,7 @@ function generateCartRow(item) {
   bookRemovalBtn.innerHTML = "X";
 
   bookTotalPrice.className = "book-total-price";
-  bookTotalPrice.innerHTML = book.price;
+  bookTotalPrice.innerHTML = `${+book.price * +item.quantity}$`;
 
   // add event handler
   bookRemovalBtn.onclick = () => {
@@ -85,12 +97,17 @@ function generateCartRow(item) {
 
   bookQuantityInput.onchange = () => {
     console.log("fire!");
+    // recalculate total per item
+    bookTotalPrice.innerHTML = +book.price * +bookQuantityInput.value;
     let cart = getCart();
+    // store value
     cart.set(book.title, {
       book: item.book,
       quantity: bookQuantityInput.value,
     });
     setCart(cart);
+    // calc grand total
+    calculateTotalPrice(cart);
   };
 
   return row;
