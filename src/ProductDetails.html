@@ -26,25 +26,26 @@
             />
             Book World
           </a>
-          <a class="navbar navbar-dark ml-5" href="/src/shop.html">Cart</a>
+          <a class="navbar navbar-dark ml-5" href="/src/shop.html">Shop</a>
           <a class="navbar navbar-dark ml-auto mr-5" style="text-align: right;" href="/src/login.html" id="login"
             >Login</a
           >
           <a class="navbar navbar-dark mr-5" href="/src/register.html" id="register"
             >Register</a
           >
-          <img src="../assets/imgs/ShoppingCart.png" alt="No image to shopping cart">
+          <img src="../assets/imgs/ShoppingCart.png" alt="No image to shopping cart" onclick="openShop()">
         </nav>
         <section>
 <div class="row">
 <div class="col-lg-7">
-  <div id="image">
+  <div>
     <script>
       window.onload = function () {
-        getBookImage("Chaos: Making a New Science");
+       getBookImage("Chaos: Making a New Science");
       }
- </script>
+  </script>
   </div>
+  
 </div>
 <div class="col-lg-4">
     <script>
@@ -53,17 +54,16 @@
         getBookImageDescription("Chaos: Making a New Science");
          }
     </script>
-    <div id="bookname" class="mt-5"></div>
-    <div id="authorname"></div>
-    <div id="publishedyear"></div>
-    <div id="bookgenre" class="mb-5">
-    </div>
-    <h5 class="fw-bold">description</h5>
-    <div id="description" class="mb-5"></div>
-    <div id="price" class="mb-5"></div>
-    <div>
-      <button id="" class="btn btn-primary" onclick="">Add to cart</button>
-    </div>
+    <section id="bookname" class="mt-5"></section>
+    <section id="authorname"></section>
+    <section id="publishedyear"></section>
+    <section id="bookgenre" class="mb-5"></section>
+    <h5 class="fw-bold">Description</h5>
+    <section id="description" class="mb-5"></section>
+    <section id="price" class="mb-5"></section>
+    <section>
+      <button id="btn-add" class="btn btn-primary">Add to cart</button>
+    </section>
 </div>
 
 </div>
