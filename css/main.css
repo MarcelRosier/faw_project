@@ -1,0 +1,57 @@
+/* To do: 
+Få Author og description på hver book card og pris.
+Tilføj pris til book.json?
+Lav mere styling på books, så det ligner mere Wireframen.  */
+
+/* Shop page */
+
+.shop-headers {
+margin: 40px 0 40px 40px;    
+}
+.shop-headers h1{
+    color: #28ab9c;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 82px;
+}
+.shop-headers h3{
+    color: #1e8075;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.section-shop {
+    padding: 40px;
+}
+.card-img-top {
+    max-width: 330px;
+    height: 100%;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+}
+
+.card {
+    
+    border-radius: 12px;
+    margin-bottom: 40px;
+}
+
+.card:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    }
+
+    .filters {
+        display:inline-flex;
+    }
+
+    .filter {
+        margin: 40px;
+    }
+    .filter h3 {
+        margin: 0 0 12px 0;
+    }
+    .filter input {
+        margin: 0 8px 0 0px;
+    }
+
+
+/* Navbar  */
