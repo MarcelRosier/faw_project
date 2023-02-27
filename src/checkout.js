@@ -95,7 +95,11 @@ function generateCartRow(item) {
     removeCartItem(book);
   };
 
-  bookQuantityInput.onchange = () => {
+  let numberInputHandler = (event) => {
+    //ensure postive values
+    if (!event.currentTarget.validity.valid) {
+      event.currentTarget.value = Math.max(event.currentTarget.value, 1);
+    }
     // recalculate total per item
     bookTotalPrice.innerHTML = `${(
       +book.price * +bookQuantityInput.value
@@ -110,7 +114,8 @@ function generateCartRow(item) {
     // calc grand total
     calculateTotalPrice(cart);
   };
-
+  bookQuantityInput.onchange = numberInputHandler;
+  bookQuantityInput.oninput = numberInputHandler;
   return row;
 }
 
