@@ -1,4 +1,4 @@
-function register() {
+function register(event) {
   login_form = document.getElementById("register_form");
   if (!login_form.checkValidity()) {
     return;
@@ -6,10 +6,19 @@ function register() {
 
   // get values
   email = document.getElementById("email_input").value;
-  pw = document.getElementById("password_input").value;
+  pw_element = document.getElementById("password_input");
+  pw = pw_element.value;
+  pw_confirmation_element = document.getElementById("password_confirm_input");
+  pw_confirmation = pw_confirmation_element.value;
   firstName = document.getElementById("first_name_input").value;
   lastName = document.getElementById("last_name_input").value;
 
+  if (pw !== pw_confirmation) {
+    event.preventDefault();
+    pw_element.setAttribute("class", "form-control is-invalid");
+    pw_confirmation_element.setAttribute("class", "form-control is-invalid");
+    return;
+  }
   // persist user
   user = {
     email: email,
@@ -40,13 +49,15 @@ function login(event) {
 
   if (user === undefined) {
     event.preventDefault();
-    error_element.hidden = false;
+    email_element.setAttribute("class", "form-control is-invalid");
+    pw_element.setAttribute("class", "form-control is-invalid");
     return;
   }
   // check pw
   if (user.password !== pw_element.value) {
     event.preventDefault();
-    error_element.hidden = false;
+    email_element.setAttribute("class", "form-control is-invalid");
+    pw_element.setAttribute("class", "form-control is-invalid");
     return;
   }
 
