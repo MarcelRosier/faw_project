@@ -8,7 +8,7 @@
     "year": 1987,
     "genre": "science",
     "description": "Chaos: Making a New Science is a debut non-fiction book by James Gleick that initially introduced the principles and early development of the chaos theory to the public. It was a finalist for the National Book Award and the Pulitzer Prize in 1987, and was shortlisted for the Science Book Prize in 1989. The book was published on October 29, 1987 by Viking Books.",
-    "price": "50$"
+    "price": "50"
   },
   {
     "title": "The Stranger",
@@ -19,7 +19,7 @@
     "year": 1942,
     "genre": "novel",
     "description": "The Stranger (French: L'Étranger), also published in English as The Outsider, is a 1942 novella by French author Albert Camus. Its theme and outlook are often cited as examples of Camus' philosophy, absurdism, coupled with existentialism; though Camus personally rejected the latter label.",
-    "price": "50$"
+    "price": "50"
   },
   {
     "title": "Vom Ende der Einsamkeit",
@@ -30,7 +30,7 @@
     "year": 2016,
     "genre": "novel",
     "description": "The End of Loneliness (Vom Ende der Einsamkeit) is a 2016 German novel by Benedict Wells. It was published in February 2016 by Diogenes Verlag. It remained on the German bestseller list for more than 80 weeks. The English version was translated by Charlotte Collins and published in 2018 by Sceptre. It was Wells' first book to be translated into English.",
-    "price": "50$"
+    "price": "50"
   },
   {
     "title": "Utopia for Realists",
@@ -41,7 +41,7 @@
     "year": 2014,
     "genre": "science",
     "description": "Utopia for Realists: The Case for a Universal Basic Income, Open Borders, and a 15-hour Workweek (alternatively subtitled And How We Can Get There and How We Can Build the Ideal World) is a book by Dutch popular historian Rutger Bregman. It was originally written as articles in Dutch for a virtual journal, De Correspondent, and was since compiled and published, and translated into several languages. It offers a critical proposal that it claims is a practical approach to reconstructing modern society to promote a more productive and equitable life based on three core ideas:  universal and unconditional basic income paid to everybody, a short working week of fifteen hours and open borders worldwide with the free movement of citizens between all states",
-    "price": "50$"
+    "price": "50"
   },
   {
     "title": "The Myth of Sisyphus",
@@ -52,7 +52,7 @@
     "year": 1942,
     "genre": "essay",
     "description": "The Myth of Sisyphus (French: Le mythe de Sisyphe) is a 1942 philosophical essay by Albert Camus. Influenced by philosophers such as Søren Kierkegaard, Arthur Schopenhauer, and Friedrich Nietzsche, Camus introduces his philosophy of the absurd. The absurd lies in the juxtaposition between the fundamental human need to attribute meaning to life and the 'unreasonable silence' of the universe in response.",
-    "price": "50$"
+    "price": "50"
   },
   {
     "title": "Alan Turing: The Enigma",
@@ -63,7 +63,7 @@
     "year": 1983,
     "genre": "biography",
     "description": "Alan Turing: The Enigma (1983) is a biography of the British mathematician, codebreaker, and early computer scientist, Alan Turing (1912–1954) by Andrew Hodges. The book covers Alan Turing's life and work. The 2014 film The Imitation Game is loosely based on the book, with dramatization.",
-    "price": "50$"
+    "price": "50"
   },
   {
     "title": "A Beautiful Mind",
@@ -74,7 +74,7 @@
     "year": 1998,
     "genre": "biography",
     "description": "A Beautiful Mind (1998) is a biography of Nobel Prize-winning economist and mathematician John Forbes Nash Jr. by Sylvia Nasar, professor of journalism at Columbia University. An unauthorized work, it won the National Book Critics Circle Award in 1998 and was nominated for the Pulitzer Prize in biography. The book was later adapted into the film by the same name in 2001 directed by Ron Howard and starring Russell Crowe as Nash.",
-    "price": "50$"
+    "price": "50"
   },
   {
     "title": "The Kaiju Preservation Society",
@@ -85,7 +85,7 @@
     "year": 2023,
     "genre": "science",
     "description": "In New York, Jamie is a driver for food delivery apps, looking for any opportunity to escape his daily schedule. Then, after making a delivery to old acquaintance Tom, he gets the chance to escape more than just his delivery gig. Tom works for an animal rights organisation – but not any that you've heard of. Known as the 'Kaiju Preservation Society', Jamie unwittingly signs on with Tom to venture to the Earth of an alternate dimension, where massive dinosaur-like creatures called 'Kaiju' roam a human-free world. But they’re in trouble – the Society are not the only ones who have found their way to the Kaiju world",
-    "price": "50$"
+    "price": "50"
   },
   {
     "title": "Children of Memory",
@@ -96,7 +96,7 @@
     "year": 2022,
     "genre": "science",
     "description": "Spanning generations, species and galaxies, best-selling author Adrian Tchaikovsky gives us the unmissable follow-up to Children of Time and Children of Ruin. Years after arkships were sent to establish new outposts following the failure of Earth, a fragile colony has managed to survive on Imir. But, existence here is a far cry from the paradise the initial mission intended. When strangers appear, society on Imir begins to fracture as neighbour turns against neighbour...",
-    "price": "50$"
+    "price": "50"
   },
   {
     "title": "Girls Can Kiss Now",
@@ -107,7 +107,7 @@
     "year": 2022,
     "genre": "essay",
     "description": "Girls Can Kiss Now is a fresh and intoxicating blend of personal stories, sharp observations, and laugh-out-loud humor. This timely collection of essays helps us make sense of our collective pop-culture past even as it points the way toward a joyous, uproarious, near--and very queer--future...",
-    "price": "50$"
+    "price": "50"
   },
   {
     "title": "Dear Damage",
@@ -118,7 +118,7 @@
     "year": 2022,
     "genre": "essay",
     "description": "A harrowing and heartfelt essay collection weaving narratives about family, gun violence, art, and the American Dream.",
-    "price": "50$"
+    "price": "50"
   },
 
   {
@@ -130,6 +130,6 @@
     "year": 2021,
     "genre": "essay",
     "description": "When everyone else goes to bed, the ones who stay up feel like they're the only people in the world. As the hours tick by deeper into the night, the familiar drops away and the unfamiliar beckons. Adults are asleep, and a hush falls over the hum of daily life. Anything is possible.",
-    "price": "50$"
+    "price": "50"
   }
 ]

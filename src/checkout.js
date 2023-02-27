@@ -13,7 +13,7 @@ function displayCart() {
   if (cart === undefined || cart.size == 0) {
     let emptyCart = document.createElement("h2");
     emptyCart.style = "text-align: center;";
-    emptyCart.className = "display-4";
+    emptyCart.className = "lead";
     emptyCart.innerHTML = "Wow, so much empty!";
     cartContent.append(emptyCart);
   }
@@ -81,6 +81,16 @@ function generateCartRow(item) {
   // add event handler
   bookRemovalBtn.onclick = () => {
     removeCartItem(book);
+  };
+
+  bookQuantityInput.onchange = () => {
+    console.log("fire!");
+    let cart = getCart();
+    cart.set(book.title, {
+      book: item.book,
+      quantity: bookQuantityInput.value,
+    });
+    setCart(cart);
   };
 
   return row;

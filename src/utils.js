@@ -116,7 +116,7 @@ export function addToCart(item) {
   cart.set(item.title, {
     book: item,
     quantity:
-      existingCartItem === undefined ? 1 : existingCartItem.quantity + 1,
+      existingCartItem === undefined ? 1 : +existingCartItem.quantity + 1,
   });
 
   localStorage.cart = mapToString(cart);
