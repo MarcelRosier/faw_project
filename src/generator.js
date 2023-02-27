@@ -53,22 +53,30 @@ async function getBookImageDescription(title)
    data.forEach(element => {
   if(element.title===title)
   {
-   let bookname=element.title;
-   let authorname=element.author;
-   let publishedyear= element.year;
-   let bookgenre=element.genre;
-   let description=element.description;
   const result1= document.getElementById("bookname");
-  result1.innerText=bookname;
+  result1.innerText=element.title;
   const result2= document.getElementById("authorname");
-  result2.innerText=authorname;
+  result2.innerText=element.author;
   const result3= document.getElementById("publishedyear");
-  result3.innerText=publishedyear;
+  result3.innerText=element.year;
   const result4= document.getElementById("bookgenre");
-  result4.innerText=bookgenre;
+  result4.innerText=element.genre;
   const result5= document.getElementById("description");
-  result5.innerText=description;
+  result5.innerText=element.description;
   }
- 
+});
+});}
+
+async function getBookImage(title)
+{
+  await fetch("/assets/books.json")
+  .then((response) =>response.json())
+  .then (data =>{
+   data.forEach(element => {
+  if(element.title===title)
+  {
+  const result1= document.getElementById("image");
+  result1.innerText=element.imageLink;
+  }
 });
 });}
