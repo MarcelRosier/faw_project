@@ -6,7 +6,7 @@ function displayCart() {
 
   // add a row for each cart item
   cart.forEach(function (item, index) {
-/*     console.log("item:", item); */
+  // console.log("item:", item); //
     let row = cartTableBody.insertRow();
     row.insertCell().textContent = item.title;
     row.insertCell().textContent = item.author;
@@ -32,7 +32,7 @@ function removeCartItem(index) {
   displayCart();
 }
 
-/*   Clear all cart items */
+// Clear all cart items //
 function clearCart() {
   // clear the cart in localStorage
   localStorage.removeItem("cart");
