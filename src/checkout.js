@@ -96,9 +96,10 @@ function generateCartRow(item) {
   };
 
   bookQuantityInput.onchange = () => {
-    console.log("fire!");
     // recalculate total per item
-    bookTotalPrice.innerHTML = +book.price * +bookQuantityInput.value;
+    bookTotalPrice.innerHTML = `${(
+      +book.price * +bookQuantityInput.value
+    ).toFixed(2)}$`;
     let cart = getCart();
     // store value
     cart.set(book.title, {
