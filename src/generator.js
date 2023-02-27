@@ -85,6 +85,9 @@ async function getBookImageDescription(title) {
           result4.innerText = element.genre;
           const result5 = document.getElementById("description");
           result5.innerText = element.description;
+
+          const res = document.getElementById("btn-add");
+          res.onclick = () => addToCart(element);
         }
       });
     });
@@ -96,11 +99,20 @@ async function getBookImage(title) {
     .then((data) => {
       data.forEach((element) => {
         if (element.title === title) {
-          const result1 = document.getElementById("image");
-          result1.innerText = element.imageLink;
+          const result1 = document.querySelector("image");
+          result1.src = element.imageLink;
+          /*cardDiv = document.createElement("div");
+  img = document.createElement("img");
+  img.setAttribute("class", "card-img-top");
+  img.setAttribute("src", book.imageLink);
+  */
         }
       });
     });
+}
+
+function openShop() {
+  window.open("/src/checkout.html");
 }
 
 window.generateContent = generateContent;
