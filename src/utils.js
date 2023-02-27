@@ -65,7 +65,7 @@ function login(event) {
   setActiveUser(user);
 }
 
-function setActiveUser(user) {
+export function setActiveUser(user) {
   if (user === undefined) {
     // = logout
     localStorage.removeItem("active_user");
@@ -74,7 +74,7 @@ function setActiveUser(user) {
   }
 }
 
-function getActiveUser() {
+export function getActiveUser() {
   return localStorage.active_user == undefined
     ? undefined
     : JSON.parse(localStorage.active_user);
@@ -97,4 +97,28 @@ function getUsers() {
   return localStorage.user_db == undefined
     ? new Map()
     : stringToMap(localStorage.user_db);
+}
+
+export function getCart() {
+  return localStorage.cart == undefined
+    ? new Map()
+    : stringToMap(localStorage.cart);
+}
+export function setCart(cart) {
+  localStorage.cart = mapToString(cart);
+}
+
+export function addToCart(item) {
+  let cart = getCart();
+  console.log("cart before:", cart);
+  // check if book is already in cart
+  let existingCartItem = cart.get(item.title);
+  cart.set(item.title, {
+    book: item,
+    quantity:
+      existingCartItem === undefined ? 1 : existingCartItem.quantity + 1,
+  });
+
+  localStorage.cart = mapToString(cart);
+  console.log("cart after:", cart);
 }

@@ -1,47 +1,111 @@
+import { getCart, setCart } from "./utils.js";
+
 function displayCart() {
-  let cart = JSON.parse(localStorage.getItem("cart"));
+  let cart = getCart();
 
-  let cartTableBody = document.querySelector("#cart-table tbody");
-  cartTableBody.innerHTML = "";
-
+  let cartContent = document.getElementById("cart-content");
+  cartContent.innerHTML = "";
   // add a row for each cart item
-  cart.forEach(function (item, index) {
-  // console.log("item:", item); //
-    let row = cartTableBody.insertRow();
-    row.insertCell().textContent = item.title;
-    row.insertCell().textContent = item.author;
-    row.insertCell().textContent = item.price;
-    let removeButton = document.createElement("button");
-    removeButton.textContent = "Remove";
-    removeButton.onclick = function () {
-      removeCartItem(index);
-    };
-    row.insertCell().appendChild(removeButton);
-  });
+  for (let item of cart.values()) {
+    let row = generateCartRow(item);
+    cartContent.append(row);
+  }
+  if (cart === undefined || cart.size == 0) {
+    let emptyCart = document.createElement("h2");
+    emptyCart.style = "text-align: center;";
+    emptyCart.className = "display-4";
+    emptyCart.innerHTML = "Wow, so much empty!";
+    cartContent.append(emptyCart);
+  }
+}
+
+function generateCartRow(item) {
+  let book = item.book;
+  let row = document.createElement("div");
+  // cover image
+  let bookImage = document.createElement("div");
+  let img = document.createElement("img");
+  //details
+  let bookDetails = document.createElement("div");
+  let bookDetailsTitle = document.createElement("h6");
+  let bookDetailsAuthor = document.createElement("p");
+  //price
+  let bookPrice = document.createElement("div");
+
+  // quantity
+  let bookQuantity = document.createElement("div");
+  let bookQuantityInput = document.createElement("input");
+
+  // remove
+  let bookRemoval = document.createElement("div");
+  let bookRemovalBtn = document.createElement("button");
+  //total price
+  let bookTotalPrice = document.createElement("div");
+
+  row.append(bookImage);
+  row.append(bookDetails);
+  row.append(bookPrice);
+  row.append(bookQuantity);
+  row.append(bookRemoval);
+  row.append(bookTotalPrice);
+  bookImage.append(img);
+  bookDetails.append(bookDetailsTitle);
+  bookDetails.append(bookDetailsAuthor);
+  bookQuantity.append(bookQuantityInput);
+  bookRemoval.append(bookRemovalBtn);
+
+  // add attributes
+  row.className = "row cart-row";
+  bookImage.className = "book-image";
+  img.src = book.imageLink;
+
+  bookDetails.className = "book-details";
+  bookDetailsTitle.innerHTML = book.title;
+  bookDetailsAuthor.innerHTML = book.author;
+
+  bookPrice.className = "book-price";
+  bookPrice.innerHTML = book.price;
+
+  bookQuantity.className = "book-quantity";
+  bookQuantityInput.type = "number";
+  bookQuantityInput.value = item.quantity;
+  bookQuantityInput.min = "1";
+
+  bookRemoval.className = "book-removal";
+  bookRemovalBtn.className = "btn btn-sm btn-danger";
+  bookRemovalBtn.innerHTML = "X";
+
+  bookTotalPrice.className = "book-total-price";
+  bookTotalPrice.innerHTML = book.price;
+
+  // add event handler
+  bookRemovalBtn.onclick = () => {
+    removeCartItem(book);
+  };
+
+  return row;
 }
 
 // remove 1 item from cart
-function removeCartItem(index) {
-  let cart = JSON.parse(localStorage.getItem("cart"));
-  cart.splice(index, 1);
+function removeCartItem(book) {
+  let cart = getCart();
+  cart.delete(book.title);
 
-  // save the updated cart to localStorage
-  localStorage.setItem("cart", JSON.stringify(cart));
-
+  setCart(cart);
   // update the displayed cart
   displayCart();
 }
 
 // Clear all cart items //
-function clearCart() {
-  // clear the cart in localStorage
-  localStorage.removeItem("cart");
+// function clearCart() {
+//   // clear the cart in localStorage
+//   localStorage.removeItem("cart");
 
-  displayCart();
-}
+//   displayCart();
+// }
 
 // display the cart on page load
 displayCart();
 
 // event listener clear cart button
-document.querySelector("#clear-cart-button").onclick = clearCart;
+// document.querySelector("#clear-cart-button").onclick = clearCart;

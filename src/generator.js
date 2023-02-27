@@ -1,3 +1,5 @@
+import { addToCart, getActiveUser } from "./utils.js";
+
 async function generateContent() {
   // load book data
   let bookData = await fetch("/assets/books.json").then((response) =>
@@ -8,29 +10,29 @@ async function generateContent() {
     generateCard(book);
   }
 }
-/* Add book to cart */
-function addToCart(book) {
-  console.log("book:", book);
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  console.log("cart before:", cart);
-  cart.push(book);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  console.log("cart after:", cart);
-  alert(`${book.title} added to cart!`);
-}
+// /* Add book to cart */
+// function addToCart_legacy(book) {
+//   console.log("book:", book);
+//   let cart = JSON.parse(localStorage.getItem("cart")) || [];
+//   console.log("cart before:", cart);
+//   cart.push(book);
+//   localStorage.setItem("cart", JSON.stringify(cart));
+//   console.log("cart after:", cart);
+//   alert(`${book.title} added to cart!`);
+// }
 
 function generateCard(book) {
   // Init
-  outerDiv = document.createElement("div");
-  cardDiv = document.createElement("div");
-  img = document.createElement("img");
-  cardBodyDiv = document.createElement("div");
-  cardTitleH5 = document.createElement("h5");
-  authorNameP = document.createElement("p");
-  bookPrice = document.createElement("p");
-  addButton = document.createElement("button");
-/* add book Event listener to button */
-  addButton.onclick = function() {
+  let outerDiv = document.createElement("div");
+  let cardDiv = document.createElement("div");
+  let img = document.createElement("img");
+  let cardBodyDiv = document.createElement("div");
+  let cardTitleH5 = document.createElement("h5");
+  let authorNameP = document.createElement("p");
+  let bookPrice = document.createElement("p");
+  let addButton = document.createElement("button");
+  /* add book Event listener to button */
+  addButton.onclick = function () {
     addToCart(book);
   };
 
@@ -54,51 +56,52 @@ function generateCard(book) {
   cardBodyDiv.setAttribute("class", "card-body");
   cardTitleH5.setAttribute("class", "card-title");
   cardTitleH5.innerHTML = book.title;
-  authorNameP.setAttribute("class", "card-text")
+  authorNameP.setAttribute("class", "card-text");
   authorNameP.innerHTML = book.author;
-  bookPrice.setAttribute("class", "card-text")
+  bookPrice.setAttribute("class", "card-text");
   bookPrice.innerHTML = book.price;
   addButton.setAttribute("class", "btn btn-primary col-12");
   addButton.innerHTML = "Add to cart";
 
   // add to row
-  row = document.getElementById("main_content_row");
+  let row = document.getElementById("main_content_row");
   row.append(outerDiv);
 }
 
-async function getBookImageDescription(title)
-{
+async function getBookImageDescription(title) {
   await fetch("/assets/books.json")
-  .then((response) =>response.json())
-  .then (data =>{
-    console.log(data);
-   data.forEach(element => {
-  if(element.title===title)
-  {
-  const result1= document.getElementById("bookname");
-  result1.innerText=element.title;
-  const result2= document.getElementById("authorname");
-  result2.innerText=element.author;
-  const result3= document.getElementById("publishedyear");
-  result3.innerText=element.year;
-  const result4= document.getElementById("bookgenre");
-  result4.innerText=element.genre;
-  const result5= document.getElementById("description");
-  result5.innerText=element.description;
-  }
-});
-});}
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      data.forEach((element) => {
+        if (element.title === title) {
+          const result1 = document.getElementById("bookname");
+          result1.innerText = element.title;
+          const result2 = document.getElementById("authorname");
+          result2.innerText = element.author;
+          const result3 = document.getElementById("publishedyear");
+          result3.innerText = element.year;
+          const result4 = document.getElementById("bookgenre");
+          result4.innerText = element.genre;
+          const result5 = document.getElementById("description");
+          result5.innerText = element.description;
+        }
+      });
+    });
+}
 
-async function getBookImage(title)
-{
+async function getBookImage(title) {
   await fetch("/assets/books.json")
-  .then((response) =>response.json())
-  .then (data =>{
-   data.forEach(element => {
-  if(element.title===title)
-  {
-  const result1= document.getElementById("image");
-  result1.innerText=element.imageLink;
-  }
-});
-});}
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((element) => {
+        if (element.title === title) {
+          const result1 = document.getElementById("image");
+          result1.innerText = element.imageLink;
+        }
+      });
+    });
+}
+
+window.generateContent = generateContent;
+window.getActiveUser = getActiveUser;
