@@ -1,17 +1,19 @@
-function register(event) {
-  login_form = document.getElementById("register_form");
+export function register(event) {
+  let login_form = document.getElementById("register_form");
   if (!login_form.checkValidity()) {
     return;
   }
 
   // get values
-  email = document.getElementById("email_input").value;
-  pw_element = document.getElementById("password_input");
-  pw = pw_element.value;
-  pw_confirmation_element = document.getElementById("password_confirm_input");
-  pw_confirmation = pw_confirmation_element.value;
-  firstName = document.getElementById("first_name_input").value;
-  lastName = document.getElementById("last_name_input").value;
+  let email = document.getElementById("email_input").value;
+  let pw_element = document.getElementById("password_input");
+  let pw = pw_element.value;
+  let pw_confirmation_element = document.getElementById(
+    "password_confirm_input"
+  );
+  let pw_confirmation = pw_confirmation_element.value;
+  let firstName = document.getElementById("first_name_input").value;
+  let lastName = document.getElementById("last_name_input").value;
 
   if (pw !== pw_confirmation) {
     event.preventDefault();
@@ -20,7 +22,7 @@ function register(event) {
     return;
   }
   // persist user
-  user = {
+  let user = {
     email: email,
     password: pw,
     firstName: firstName,
@@ -32,20 +34,20 @@ function register(event) {
   setActiveUser(user);
 }
 
-function login(event) {
-  login_form = document.getElementById("login_form");
+export function login(event) {
+  let login_form = document.getElementById("login_form");
   if (!login_form.checkValidity()) {
     return;
   }
 
   // get values
-  email_element = document.getElementById("email_input");
-  pw_element = document.getElementById("password_input");
-  error_element = document.getElementById("login_error_p");
+  let email_element = document.getElementById("email_input");
+  let pw_element = document.getElementById("password_input");
+  let error_element = document.getElementById("login_error_p");
 
   // check if access data is valid
-  user_db = getUsers();
-  user = user_db.get(email_element.value);
+  let user_db = getUsers();
+  let user = user_db.get(email_element.value);
 
   if (user === undefined) {
     event.preventDefault();
@@ -88,7 +90,7 @@ function stringToMap(str) {
 }
 function addUser(user) {
   // add user to db
-  user_db = getUsers();
+  let user_db = getUsers();
   user_db.set(user.email, user);
   localStorage.user_db = mapToString(user_db);
 }
@@ -122,3 +124,7 @@ export function addToCart(item) {
   localStorage.cart = mapToString(cart);
   console.log("cart after:", cart);
 }
+
+window.login = login;
+window.register = register;
+window.setActiveUser = setActiveUser;
