@@ -11,8 +11,8 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <script src="utils.js" text="application/javascript"></script>
-    <script src="generator.js" text="application/javascript"></script>
+    <script type="module" src="utils.js" text="application/javascript"></script>
+    <script type="module" src="generator.js" text="application/javascript"></script>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/reset.css">
   </head>
@@ -28,7 +28,7 @@
             class="d-inline-block align-top"
             alt=""
           />
-          Book World
+          <em> Chapter 1</em>
         </a>
         <p class="navbar navbar-text " id="nav_p"></p>
         </div>
@@ -71,9 +71,9 @@
         //load book data
         generateContent();
         // check if user is logged in
-        login = document.getElementById("login");
-        nav_p = document.getElementById("nav_p");
-        activeUser = getActiveUser();
+        let login = document.getElementById("login");
+        let nav_p = document.getElementById("nav_p");
+        let activeUser = getActiveUser();
         if (activeUser !== undefined) {
           nav_p.innerHTML = "Logged in as " + activeUser.firstName;
           login.innerHTML = "Logout";
