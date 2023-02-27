@@ -88,7 +88,7 @@ function generateCartRow(item) {
   bookRemovalBtn.innerHTML = "X";
 
   bookTotalPrice.className = "book-total-price";
-  bookTotalPrice.innerHTML = `${+book.price * +item.quantity}$`;
+  bookTotalPrice.innerHTML = `${(+book.price * +item.quantity).toFixed(2)}$`;
 
   // add event handler
   bookRemovalBtn.onclick = () => {
