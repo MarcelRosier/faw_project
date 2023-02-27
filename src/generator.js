@@ -43,3 +43,31 @@ function generateCard(book) {
   row = document.getElementById("main_content_row");
   row.append(outerDiv);
 }
+
+async function getBookImageDescription(title)
+{
+  await fetch("/assets/books.json")
+  .then((response) =>response.json())
+  .then (data =>{
+   /* if(data.title===title)
+  {
+    let title1= response.bookData.title;
+    let author=response.bookData.author;
+    let language=response.bookData.language;
+    let year=response.bookData.year;
+    let Genre=response.bookData.genre;
+    let Totalpages=response.bookData.pages;
+    let BookDescription=response.bookData.description;
+    let title=document.createElement("h5");
+    title.setAttribute("class", "card-title");
+    title.innerHTML = title1;
+  }
+  });
+}
+*/
+ console.log(data);
+data.forEach(element => {
+  if(element.title===title)
+  {console.log(element.title);}
+});
+});}
