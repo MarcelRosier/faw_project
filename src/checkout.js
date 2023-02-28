@@ -97,6 +97,9 @@ function generateCartRow(item) {
 
   let numberInputHandler = (event) => {
     //ensure postive values
+    if (event.currentTarget.value === "") {
+      event.currentTarget.value = 1;
+    }
     if (!event.currentTarget.validity.valid) {
       event.currentTarget.value = Math.max(event.currentTarget.value, 1);
     }
