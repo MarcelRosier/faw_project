@@ -95,10 +95,18 @@ function generateCartRow(item) {
     removeCartItem(book);
   };
 
-  bookQuantityInput.onchange = () => {
-    console.log("fire!");
+  let numberInputHandler = (event) => {
+    //ensure postive values
+    if (event.currentTarget.value === "") {
+      event.currentTarget.value = 1;
+    }
+    if (!event.currentTarget.validity.valid) {
+      event.currentTarget.value = Math.max(event.currentTarget.value, 1);
+    }
     // recalculate total per item
-    bookTotalPrice.innerHTML = +book.price * +bookQuantityInput.value;
+    bookTotalPrice.innerHTML = `${(
+      +book.price * +bookQuantityInput.value
+    ).toFixed(2)}$`;
     let cart = getCart();
     // store value
     cart.set(book.title, {
@@ -109,7 +117,8 @@ function generateCartRow(item) {
     // calc grand total
     calculateTotalPrice(cart);
   };
-
+  bookQuantityInput.onchange = numberInputHandler;
+  bookQuantityInput.oninput = numberInputHandler;
   return row;
 }
 
