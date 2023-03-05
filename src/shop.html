@@ -35,11 +35,6 @@
         <a class="navbar navbar-light float-right" href="/src/shop.html">Shop</a>
         <a class="navbar navbar-light float-right" href="/src/checkout.html">Cart</a>
         <a class="navbar navbar-light float-right" href="/src/login.html" id="login">Login</a>
-
-<!--         Not added functionality for the 2 buttons  -->
-<!--           <button type="button"  href="/src/login.html" id="login" class="btn btn-light">Login</button>
-          <button type="button" href="/src/login.html" class="btn btn-primary">Register</button> -->
-
           <ul class="navbar-nav mr-auto">
       </nav>
     </header>
@@ -47,21 +42,49 @@
       <h1>Shop</h1>
       <h3>Explore our book selection</h3>
     </div>
-    <div class="filters">
-      <div class="filter">
-      <h3>Author</h3>      
-        <div><input type="checkbox" name="language" value="english" id="english"><label for="english">English</label></div>
-        <div><input type="checkbox" name="language" value="german" id="german"><label for="german">German</label></div>
-      </div>
-      <div class="filter">
-      <h3>Genre</h3>      
-        <div><input type="checkbox" name="genre" value="science" id="science"><label for="science">Science</label></div>
-        <div><input type="checkbox" name="genre" value="novel" id="novel"><label for="novel">Novel</label></div>
-        <div><input type="checkbox" name="genre" value="essay" id="essay"><label for="essay">Essay</label></div>
-        <div><input type="checkbox" name="genre" value="biography" id="biography"><label for="biography">Biography</label></div>
-      </div>
-    </div>
+
     <section class="section-shop"">
+      <!-- Filter -->
+
+  <div class="filter-container d-flex row mb-5">
+    <div class="col-sm-4 ">
+      <label for="language-filter" class="form-label">Language:</label>
+      <select id="language-filter" class="form-select">
+        <option value="">All Languages</option>
+        <option value="English">English</option>
+        <option value="German">German</option>
+      </select>
+    </div>
+    <div class="col-sm-4">
+      <label for="author-filter" class="form-label">Author:</label>
+      <select id="author-filter" class="form-select">
+        <option value="">All Authors</option>
+        <option value="James Gleick">James Gleick</option>
+        <option value="Albert Camus">Albert Camus</option>
+        <option value="Benedict Wells">Benedict Wells</option>
+        <option value="Rutger Bregman">Rutger Bregman</option>
+        <option value="Andrew Hodges">Andrew Hodges</option>
+        <option value="Sylvia Nasar">Sylvia Nasar</option>
+        <option value="John Scalzi">John Scalzi</option>
+        <option value="Adrian Tchaikovsky">Adrian Tchaikovsky</option>
+        <option value="Jill Gutowitz">Jill Gutowitz</option>
+        <option value="Ashley Marie Farmer">Ashley Marie Farmer</option>
+        <option value="Laura Silverman">Laura Silverman</option>
+      </select>
+    </div>
+    <div class="col-sm-4">
+      <label for="genre-filter" class="form-label">Genre:</label>
+      <select id="genre-filter" class="form-select">
+        <option value="">All Genres</option>
+        <option value="science">Science</option>
+        <option value="novel">Novel</option>
+        <option value="essay">Essay</option>
+        <option value="biography">Biography</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Filter end -->
       <!-- Book content -->
       <div class="row" id="main_content_row"></div>
     </section>
@@ -83,6 +106,8 @@
           };
         }
       };
+    </script>
+    <script src="filterBooks.js" text="application/javascript">
     </script>
   </body>
 </html>

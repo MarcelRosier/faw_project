@@ -46,7 +46,7 @@ function generateCard(book) {
   //   add content and attributes
   outerDiv.setAttribute(
     "class",
-    "col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex align-items-stretch"
+    "col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex align-items-stretch justify-content-center"
   );
   cardDiv.setAttribute("class", "card");
   img.setAttribute("class", "card-img-top");
