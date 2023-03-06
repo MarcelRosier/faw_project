@@ -125,6 +125,23 @@ export function addToCart(item) {
   console.log("cart after:", cart);
 }
 
+export function setNavGreeting() {
+  // check if user is logged in
+  let login = document.getElementById("login");
+  let nav_p = document.getElementById("navbar-msg");
+  let activeUser = getActiveUser();
+  if (activeUser !== undefined) {
+    nav_p.innerHTML = "Logged in as " + activeUser.firstName;
+    login.innerHTML = "Logout";
+    login.href = "";
+    document.getElementById("register").hidden = true;
+    login.onclick = function () {
+      setActiveUser();
+    };
+  }
+}
+
 window.login = login;
 window.register = register;
 window.setActiveUser = setActiveUser;
+window.setNavGreeting = setNavGreeting;

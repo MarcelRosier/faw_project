@@ -27,26 +27,29 @@
           />
           Chapter One
         </a>
-        <a class="navbar navbar-dark ml-5" href="/src/shop.html">Shop</a>
+        <a class="navbar navbar-dark ml-auto" href="/src/shop.html">Shop</a>
         <a
-          class="navbar navbar-dark ml-auto mr-5"
-          style="text-align: right"
-          href="/src/login.html"
-          id="login"
-          >Login</a
+        class="navbar navbar-dark mr-1"
+        style="text-align: right"
+        href="/src/login.html"
+        id="login"
+        >Login</a
         >
         <a
-          class="navbar navbar-dark mr-5"
-          href="/src/register.html"
-          id="register"
-          >Register</a
+        class="navbar navbar-dark mr-1"
+        href="/src/register.html"
+        id="register"
+        >Register</a
         >
-          <a href="/src/checkout.html">
-            <img src="../assets/imgs/shopping-cart.png"
-              width="40"
-              alt="No image to shopping cart"
-            />
-          </a>
+        <a id="navbar-msg" class="navbar nav-item navbar-text" style="text-align: right">
+          <p>Welcome</p>
+        </a>
+        <a href="/src/checkout.html">
+          <img src="../assets/imgs/shopping-cart.png"
+            width="30"
+            alt="No image to shopping cart"
+          />
+        </a>
       </nav>
     </header>
     <div class="shop-headers">
@@ -60,7 +63,7 @@
         <!-- Indicators -->
         <ul class="carousel-indicators" id="carousel-indicator">
         </ul>
-    
+        
         <!-- Wrapper for slides -->
         <div class="carousel-inner" id="carousel-content">
          
@@ -128,19 +131,8 @@
         //load book data
         generateCarousel()
         generateContent();
-        // check if user is logged in
-        let login = document.getElementById("login");
-        let nav_p = document.getElementById("nav_p");
-        let activeUser = getActiveUser();
-        if (activeUser !== undefined) {
-          nav_p.innerHTML = "Logged in as " + activeUser.firstName;
-          login.innerHTML = "Logout";
-          login.href = "";
-          login.onclick = function () {
-            setActiveUser();
-          };
-        }
-      };
+        setNavGreeting()
+      }
     </script>
     <script src="filterBooks.js" text="application/javascript">
     </script>
