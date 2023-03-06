@@ -169,4 +169,3 @@ function openShop() {
 window.generateContent = generateContent;
 window.getActiveUser = getActiveUser;
 window.getBookImageDescription = getBookImageDescription;
-window.getBookImage = getBookImage;
