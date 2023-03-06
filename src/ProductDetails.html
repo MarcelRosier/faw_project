@@ -52,32 +52,38 @@
       </nav>
       <section>
         <div class="row">
-          <div class="col-lg-7">
-            <div>
-              <script>
-                window.onload = function () {
-                  getBookImage("Chaos: Making a New Science");
-                };
-              </script>
-            </div>
+          <div class="col-lg-7" id="image_occupied">
+            <!-- <section>
+        <div class="row" id="main_content_row"></div>
+  </section> -->
           </div>
           <div class="col-lg-4">
             <script>
               window.onload = function () {
                 //load book data
-                getBookImageDescription("Chaos: Making a New Science");
+                let url = new URL(window.location.href);
+                let title = url.searchParams.get("title");
+                if (title !== undefined) {
+                  getBookImageDescription(title);
+                }
+                // getBookImage("Utopia for Realists");
               };
             </script>
-            <section id="bookname" class="mt-5"></section>
-            <section id="authorname"></section>
-            <section id="publishedyear"></section>
-            <section id="bookgenre" class="mb-5"></section>
-            <h5 class="fw-bold">Description</h5>
-            <section id="description" class="mb-5"></section>
-            <section id="price" class="mb-5"></section>
-            <section>
-              <button id="btn-add" class="btn btn-primary">Add to cart</button>
-            </section>
+            <div class="card">
+              <img id="book-cover" src="" alt="" />
+              <section id="bookname" class="mt-5"></section>
+              <section id="authorname"></section>
+              <section id="publishedyear"></section>
+              <section id="bookgenre" class="mb-5"></section>
+              <h5 class="fw-bold">Description</h5>
+              <section id="description" class="mb-5"></section>
+              <section id="price" class="mb-5"></section>
+              <section>
+                <button id="btn-add" class="btn btn-primary">
+                  Add to cart
+                </button>
+              </section>
+            </div>
           </div>
         </div>
       </section>
