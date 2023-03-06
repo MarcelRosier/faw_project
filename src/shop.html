@@ -18,9 +18,8 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-light bg-light"><
-        <div>
-          <a class="navbar-brand" href="/src/index.html">
+      <nav class="navbar navbar-light bg-white">
+        <a class="navbar-brand" href="index.html">
           <img
             src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png"
             width="30"
@@ -28,14 +27,28 @@
             class="d-inline-block align-top"
             alt=""
           />
-          <em> Chapter 1</em>
+          Chapter One
         </a>
-        <p class="navbar navbar-text " id="nav_p"></p>
-        </div>
-        <a class="navbar navbar-light float-right" href="/src/shop.html">Shop</a>
-        <a class="navbar navbar-light float-right" href="/src/checkout.html">Cart</a>
-        <a class="navbar navbar-light float-right" href="/src/login.html" id="login">Login</a>
-          <ul class="navbar-nav mr-auto">
+        <a class="navbar navbar-dark ml-5" href="/src/shop.html">Shop</a>
+        <a
+          class="navbar navbar-dark ml-auto mr-5"
+          style="text-align: right"
+          href="/src/login.html"
+          id="login"
+          >Login</a
+        >
+        <a
+          class="navbar navbar-dark mr-5"
+          href="/src/register.html"
+          id="register"
+          >Register</a
+        >
+        <a href="checkout.html">
+        <img src="../assets/imgs/ShoppingCart.png"
+          alt="No image to shopping cart"
+          onclick="openShop()"
+        />
+      </a>
       </nav>
     </header>
     <div class="shop-headers">
