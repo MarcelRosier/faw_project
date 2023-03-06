@@ -15,5 +15,5 @@ header {
 }
 header h1 {
   color: #fff;
-  background-color: #1e807555;
+  background-image: radial-gradient(#1e8075aa, #1e807500);
 }
