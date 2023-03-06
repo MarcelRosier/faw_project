@@ -132,40 +132,6 @@ async function getBookImageDescription(title) {
     });
 }
 
-// async function getBookImage(title) {
-//   await fetch("/assets/books.json")
-//     .then((response) => response.json())
-//     .then((data) => {
-//       data.forEach((element) => {
-//         if (element.title === title) {
-//           //const result1= document.querySelector("image");
-//           //result1.src=element.imageLink;
-//           //outerDiv = document.createElement("div");
-//           //cardDiv = document.createElement("div");
-//           //img.setAttribute("class", "card-img-top");
-//           img.setAttribute("src", element.imageLink);
-
-//           //outerDiv.append(img);
-//           //cardDiv.append(img);
-//           //outerDiv.setAttribute(
-//           // "class",
-//           // "col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex align-items-stretch .img-fluid. max-width: 100%"
-//           //);
-//           img.setAttribute(
-//             "class",
-//             " col-lg-7 col-xl-3 d-flex align-items-center max-width=100% max-height=100%"
-//           );
-//           row = document.getElementById("image_occupied");
-//           row.append(img);
-//         }
-//       });
-//     });
-// }
-
-function openShop() {
-  window.open("/src/checkout.html");
-}
-
 window.generateContent = generateContent;
 window.getActiveUser = getActiveUser;
 window.getBookImageDescription = getBookImageDescription;

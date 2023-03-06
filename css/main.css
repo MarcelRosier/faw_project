@@ -6,86 +6,105 @@ Lav mere styling på books, så det ligner mere Wireframen.  */
 /* Shop page */
 
 .shop-headers {
-margin: 40px 0 40px 40px;    
+  margin: 40px 0 40px 40px;
 }
-.shop-headers h1{
-    color: #28ab9c;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: bold;
-    font-size: 82px;
+.shop-headers h1 {
+  color: #28ab9c;
+  font-family: "DM Sans", "DM Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  font-size: 82px;
 }
-.shop-headers h3{
-    color: #1e8075;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.shop-headers h3 {
+  color: #1e8075;
+  font-family: "DM Sans", "DM Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .section-shop {
-    padding: 40px;
+  padding: 40px;
 }
 .card-img-top {
-    max-width: 330px;
-    height: 100%;
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
+  width: 100%;
+  height: 45vh;
+  /* max-width: 330px; */
+  object-fit: cover;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
 }
 
 .card {
-    
-    border-radius: 12px;
-    margin-bottom: 40px;
+  width: 35vh;
+  border-radius: 12px;
+  margin-bottom: 40px;
 }
 
 .card:hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.2); 
-    }
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
 
-    .filters {
-        display:inline-flex;
-    }
+.filters {
+  display: inline-flex;
+}
 
-    .filter {
-        margin: 40px;
-    }
-    .filter h3 {
-        margin: 0 0 12px 0;
-    }
-    .filter input {
-        margin: 0 8px 0 0px;
-    }
-
+.filter {
+  margin: 40px;
+}
+.filter h3 {
+  margin: 0 0 12px 0;
+}
+.filter input {
+  margin: 0 8px 0 0px;
+}
 
 /* Navbar  */
 /* Filter */
 .filter-container {
-    background-color: white;
-    padding: 10px 20px;
-    border-radius: 12px;
-    background-color: rgb(40, 171, 156);
-    color: white;
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background-image: linear-gradient(to right, #135e55, #33c6b5);
+  color: white;
 }
 .filter-container label {
-    font-size: 22px;
-    margin-right: 4px;
-    text-shadow: 1px 1px #000;
+  font-size: 22px;
+  margin-right: 4px;
+  /* text-shadow: 1px 1px #000; */
+  font-family: "DM Sans";
 }
+
 select {
-    -webkit-appearance: button;
-    -webkit-border-radius: 2px;
-    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    -webkit-padding-end: 20px;
-    -webkit-padding-start: 2px;
-    -webkit-user-select: none;
-    background-position: center right;
-    background-repeat: no-repeat;
-    border: 1px solid #AAA;
-    color: #555;
-    font-size: inherit;
-    margin: 0;
-    overflow: hidden;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    border-radius: 6px;
-    min-width: 200px;
+  -webkit-appearance: button;
+  -webkit-border-radius: 2px;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-padding-end: 20px;
+  -webkit-padding-start: 2px;
+  -webkit-user-select: none;
+  background-position: center right;
+  background-repeat: no-repeat;
+  border: 1px solid #aaa;
+  color: #555;
+  font-size: inherit;
+  margin: 0;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 6px;
+  min-width: 200px;
+}
+
+.section-shop-featured {
+  text-align: center;
+  font-family: "DM Sans";
+  color: #fff;
+  background-image: radial-gradient(#135e55, #b5f7ef);
+}
+.carousel img {
+  max-height: 30vh;
+  object-fit: contain;
+}
+.carousel {
+  margin: auto;
+  padding: 8px;
+  max-width: 50% !important;
 }
