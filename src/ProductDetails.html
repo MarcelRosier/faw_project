@@ -61,20 +61,29 @@
             <script>
               window.onload = function () {
                 //load book data
-                getBookImageDescription("Utopia for Realists");
-                getBookImage("Utopia for Realists");
+                let url = new URL(window.location.href);
+                let title = url.searchParams.get("title");
+                if (title !== undefined) {
+                  getBookImageDescription(title);
+                }
+                // getBookImage("Utopia for Realists");
               };
             </script>
-            <section id="bookname" class="mt-5"></section>
-            <section id="authorname"></section>
-            <section id="publishedyear"></section>
-            <section id="bookgenre" class="mb-5"></section>
-            <h5 class="fw-bold">Description</h5>
-            <section id="description" class="mb-5"></section>
-            <section id="price" class="mb-5"></section>
-            <section>
-              <button id="btn-add" class="btn btn-primary">Add to cart</button>
-            </section>
+            <div class="card">
+              <img id="book-cover" src="" alt="" />
+              <section id="bookname" class="mt-5"></section>
+              <section id="authorname"></section>
+              <section id="publishedyear"></section>
+              <section id="bookgenre" class="mb-5"></section>
+              <h5 class="fw-bold">Description</h5>
+              <section id="description" class="mb-5"></section>
+              <section id="price" class="mb-5"></section>
+              <section>
+                <button id="btn-add" class="btn btn-primary">
+                  Add to cart
+                </button>
+              </section>
+            </div>
           </div>
         </div>
       </section>
