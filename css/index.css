@@ -14,5 +14,6 @@ header {
   font-weight: 300;
 }
 header h1 {
-  color: #28ab9c;
+  color: #fff;
+  background-color: #1e807555;
 }

@@ -125,8 +125,8 @@ function generateCard(book) {
   cardTitleH5.innerHTML = book.title;
   authorNameP.setAttribute("class", "card-text");
   authorNameP.innerHTML = book.author;
-  bookPrice.setAttribute("class", "card-text");
-  bookPrice.innerHTML = book.price;
+  bookPrice.setAttribute("class", "card-text price");
+  bookPrice.innerHTML = `${(+book.price).toFixed(2)}$`;
   addButton.setAttribute("class", "btn btn-primary col-12");
   addButton.innerHTML = "Add to cart";
 

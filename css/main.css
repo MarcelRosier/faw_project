@@ -107,3 +107,11 @@ select {
   padding: 8px;
   max-width: 50% !important;
 }
+
+.card-text.price {
+  color: #1c1c1caa;
+}
+
+/* .card-body {
+  justify-content: space-evenly;
+} */
