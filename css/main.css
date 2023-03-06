@@ -59,8 +59,8 @@
 .filter-container {
   background-color: white;
   padding: 10px 20px;
-  border-radius: 12px;
-  background-image: linear-gradient(to right, #135e55, #33c6b5);
+  border-radius: 12px 4px 12px 4px;
+  background-image: linear-gradient(to right, #135e55, #b5f7ef);
   color: white;
 }
 .filter-container label {

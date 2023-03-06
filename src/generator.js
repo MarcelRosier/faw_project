@@ -44,16 +44,46 @@ async function generateContent() {
   authorFilter.addEventListener("change", filterAndGenerateCards);
   genreFilter.addEventListener("change", filterAndGenerateCards);
 }
-// /* Add book to cart */
-// function addToCart_legacy(book) {
-//   console.log("book:", book);
-//   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-//   console.log("cart before:", cart);
-//   cart.push(book);
-//   localStorage.setItem("cart", JSON.stringify(cart));
-//   console.log("cart after:", cart);
-//   alert(`${book.title} added to cart!`);
-// }
+
+async function generateCarousel() {
+  let bookData = await fetch("/assets/books.json")
+    .then((response) => response.json())
+    .catch(() => console.log("json not found!"));
+
+  bookData = bookData.splice(7);
+  let carouselContent = document.getElementById("carousel-content");
+  let carouselIndicator = document.getElementById("carousel-indicator");
+  function generateCarouselItem(book, index) {
+    let itemDiv = document.createElement("div");
+    let itemLink = document.createElement("a");
+    let itemImg = document.createElement("img");
+    itemDiv.className = index == 0 ? "carousel-item active" : "carousel-item";
+    //link
+    itemLink.href = "/src/productDetails.html?title=" + book.title;
+
+    // img
+    itemImg.className = "img-fluid d-block w-100";
+    itemImg.src = book.imageLink;
+    itemImg.alt = book.title;
+    carouselContent.append(itemDiv);
+    itemDiv.append(itemLink);
+    itemLink.append(itemImg);
+
+    // add indicator
+    let listItem = document.createElement("li");
+    listItem.setAttribute("data-target", "#myCarousel");
+    listItem.setAttribute("data-slide-to", index);
+    if (index == 0) {
+      listItem.className = "active";
+    }
+
+    carouselIndicator.append(listItem);
+  }
+  for (let i = 0; i < bookData.length; i++) {
+    generateCarouselItem(bookData[i], i);
+  }
+  console.log(bookData.slice(6));
+}
 
 function generateCard(book) {
   // Init
@@ -120,10 +150,7 @@ async function getBookImageDescription(title) {
             element.description;
           let img = document.getElementById("book-cover");
           img.src = element.imageLink;
-          img.setAttribute(
-            "class",
-            " col-sm-12 d-flex align-items-center"
-          );
+          img.setAttribute("class", " col-sm-12 d-flex align-items-center");
 
           const res = document.getElementById("btn-add");
           res.onclick = () => addToCart(element);
@@ -135,3 +162,4 @@ async function getBookImageDescription(title) {
 window.generateContent = generateContent;
 window.getActiveUser = getActiveUser;
 window.getBookImageDescription = getBookImageDescription;
+window.generateCarousel = generateCarousel;

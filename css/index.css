@@ -6,10 +6,13 @@ header {
   color: white;
   overflow: hidden;
   background: black; /* fallback for old browsers */
-  background: radial-gradient(#ffffff00, #2c3e50dd),
-    url(https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg); /* Chrome 10-25, Safari 5.1-6 */
+  background: radial-gradient(#ffffff00, #04875540),
+    url(https://images.unsplash.com/photo-1524492514790-8310bf594ea4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Ym9vayUyMHBsYW50fGVufDB8fDB8fA%3D%3D&w=1000&q=80); /* Chrome 10-25, Safari 5.1-6 */
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "DM Sans";
   font-weight: 300;
+}
+header h1 {
+  color: #28ab9c;
 }
