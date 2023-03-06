@@ -61,23 +61,12 @@
       <section class="container d-flex m-auto">
         <div class="row">
           <div class="col-xs-12 col-md-6" id="image_occupied">
-            <img id="book-cover" style="" src="" alt="" />
+            <img id="book-cover" src="" alt="" />
             <!-- <section>
         <div class="row" id="main_content_row"></div>
   </section> -->
           </div>
           <div class="col-xs-12 col-md-6">
-            <script>
-              window.onload = function () {
-                //load book data
-                let url = new URL(window.location.href);
-                let title = url.searchParams.get("title");
-                if (title !== undefined) {
-                  getBookImageDescription(title);
-                }
-                // getBookImage("Utopia for Realists");
-              };
-            </script>
             <div class="card" style="padding: 30px">
               <h2 id="bookname" class="mt-2"></h2>
               <h3
@@ -100,6 +89,12 @@
     </header>
     <script>
       window.onload = function () {
+        //load book data
+        let url = new URL(window.location.href);
+        let title = url.searchParams.get("title");
+        if (title !== undefined) {
+          getBookImageDescription(title);
+        }
         setNavGreeting();
       };
     </script>
