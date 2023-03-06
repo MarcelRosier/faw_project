@@ -12,58 +12,72 @@
       crossorigin="anonymous"
     />
   </head>
-  <script src="./generator.js" text="application/javascript"></script>
+  <script
+    type="module"
+    src="/src/generator.js"
+    text="application/javascript"
+  ></script>
   <body>
     <header>
-        <nav class="navbar navbar-light bg-white">
-          <a class="navbar-brand " href="#">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png"
-              width="30"
-              height="30"
-              class="d-inline-block align-top"
-              alt=""
-            />
-            Book World
-          </a>
-          <a class="navbar navbar-dark ml-5" href="/src/shop.html">Shop</a>
-          <a class="navbar navbar-dark ml-auto mr-5" style="text-align: right;" href="/src/login.html" id="login"
-            >Login</a
-          >
-          <a class="navbar navbar-dark mr-5" href="/src/register.html" id="register"
-            >Register</a
-          >
-          <img src="../assets/imgs/ShoppingCart.png" alt="No image to shopping cart" onclick="openShop()">
-        </nav>
-        <section>
-<div class="row">
-<div class="col-lg-7" id="image_occupied">
-  <!-- <section>
+      <nav class="navbar navbar-light bg-white">
+        <a class="navbar-brand" href="#">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png"
+            width="30"
+            height="30"
+            class="d-inline-block align-top"
+            alt=""
+          />
+          Book World
+        </a>
+        <a class="navbar navbar-dark ml-5" href="/src/shop.html">Shop</a>
+        <a
+          class="navbar navbar-dark ml-auto mr-5"
+          style="text-align: right"
+          href="/src/login.html"
+          id="login"
+          >Login</a
+        >
+        <a
+          class="navbar navbar-dark mr-5"
+          href="/src/register.html"
+          id="register"
+          >Register</a
+        >
+        <img
+          src="../assets/imgs/ShoppingCart.png"
+          alt="No image to shopping cart"
+          onclick="openShop()"
+        />
+      </nav>
+      <section>
+        <div class="row">
+          <div class="col-lg-7" id="image_occupied">
+            <!-- <section>
         <div class="row" id="main_content_row"></div>
   </section> -->
-</div>
-<div class="col-lg-4">
-    <script>
-         window.onload = function () {
-        //load book data
-        getBookImageDescription("Utopia for Realists");
-        getBookImage("Utopia for Realists");
-         }
-    </script>
-    <section id="bookname" class="mt-5"></section>
-    <section id="authorname"></section>
-    <section id="publishedyear"></section>
-    <section id="bookgenre" class="mb-5"></section>
-    <h5 class="fw-bold">Description</h5>
-    <section id="description" class="mb-5"></section>
-    <section id="price" class="mb-5"></section>
-    <section>
-      <button id="btn-add" class="btn btn-primary">Add to cart</button>
-    </section>
-</div>
-
-</div>
-        </section>
-      </header>
+          </div>
+          <div class="col-lg-4">
+            <script>
+              window.onload = function () {
+                //load book data
+                getBookImageDescription("Utopia for Realists");
+                getBookImage("Utopia for Realists");
+              };
+            </script>
+            <section id="bookname" class="mt-5"></section>
+            <section id="authorname"></section>
+            <section id="publishedyear"></section>
+            <section id="bookgenre" class="mb-5"></section>
+            <h5 class="fw-bold">Description</h5>
+            <section id="description" class="mb-5"></section>
+            <section id="price" class="mb-5"></section>
+            <section>
+              <button id="btn-add" class="btn btn-primary">Add to cart</button>
+            </section>
+          </div>
+        </div>
+      </section>
+    </header>
   </body>
 </html>
