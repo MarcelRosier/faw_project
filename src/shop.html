@@ -5,12 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Webshop</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="module" src="utils.js" text="application/javascript"></script>
     <script type="module" src="generator.js" text="application/javascript"></script>
     <link rel="stylesheet" href="/css/main.css">
@@ -18,10 +16,10 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-light bg-white">
+      <nav class="navbar navbar-light">
         <a class="navbar-brand" href="index.html">
           <img
-            src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png"
+            src="/assets/imgs/open-book.png"
             width="30"
             height="30"
             class="d-inline-block align-top"
@@ -43,12 +41,12 @@
           id="register"
           >Register</a
         >
-        <a href="checkout.html">
-        <img src="../assets/imgs/ShoppingCart.png"
-          alt="No image to shopping cart"
-          onclick="openShop()"
-        />
-      </a>
+          <a href="/src/checkout.html">
+            <img src="../assets/imgs/shopping-cart.png"
+              width="40"
+              alt="No image to shopping cart"
+            />
+          </a>
       </nav>
     </header>
     <div class="shop-headers">
@@ -56,46 +54,69 @@
       <h3>Explore and buy from our book selection</h3>
     </div>
 
+    <section class="section-shop-featured">
+      <h2>Community favorites</h2>  
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ul class="carousel-indicators" id="carousel-indicator">
+        </ul>
+    
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" id="carousel-content">
+         
+        </div>
+    
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    
+    </section>
+
     <section class="section-shop"">
       <!-- Filter -->
 
-  <div class="filter-container d-flex row mb-5">
-    <div class="col-sm-4 ">
-      <label for="language-filter" class="form-label">Language:</label>
-      <select id="language-filter" class="form-select">
-        <option value="">All Languages</option>
-        <option value="English">English</option>
-        <option value="German">German</option>
-      </select>
-    </div>
-    <div class="col-sm-4">
-      <label for="author-filter" class="form-label">Author:</label>
-      <select id="author-filter" class="form-select">
-        <option value="">All Authors</option>
-        <option value="James Gleick">James Gleick</option>
-        <option value="Albert Camus">Albert Camus</option>
-        <option value="Benedict Wells">Benedict Wells</option>
-        <option value="Rutger Bregman">Rutger Bregman</option>
-        <option value="Andrew Hodges">Andrew Hodges</option>
-        <option value="Sylvia Nasar">Sylvia Nasar</option>
-        <option value="John Scalzi">John Scalzi</option>
-        <option value="Adrian Tchaikovsky">Adrian Tchaikovsky</option>
-        <option value="Jill Gutowitz">Jill Gutowitz</option>
-        <option value="Ashley Marie Farmer">Ashley Marie Farmer</option>
-        <option value="Laura Silverman">Laura Silverman</option>
-      </select>
-    </div>
-    <div class="col-sm-4">
-      <label for="genre-filter" class="form-label">Genre:</label>
-      <select id="genre-filter" class="form-select">
-        <option value="">All Genres</option>
-        <option value="science">Science</option>
-        <option value="novel">Novel</option>
-        <option value="essay">Essay</option>
-        <option value="biography">Biography</option>
-      </select>
-    </div>
-  </div>
+      <div class="filter-container d-flex row mb-5">
+        <div class="col-sm-4 ">
+          <label for="language-filter" class="form-label">Language</label>
+          <select id="language-filter" class="form-select">
+            <option value="">All Languages</option>
+            <option value="English">English</option>
+            <option value="German">German</option>
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <label for="author-filter" class="form-label">Author</label>
+          <select id="author-filter" class="form-select">
+            <option value="">All Authors</option>
+            <option value="James Gleick">James Gleick</option>
+            <option value="Albert Camus">Albert Camus</option>
+            <option value="Benedict Wells">Benedict Wells</option>
+            <option value="Rutger Bregman">Rutger Bregman</option>
+            <option value="Andrew Hodges">Andrew Hodges</option>
+            <option value="Sylvia Nasar">Sylvia Nasar</option>
+            <option value="John Scalzi">John Scalzi</option>
+            <option value="Adrian Tchaikovsky">Adrian Tchaikovsky</option>
+            <option value="Jill Gutowitz">Jill Gutowitz</option>
+            <option value="Ashley Marie Farmer">Ashley Marie Farmer</option>
+            <option value="Laura Silverman">Laura Silverman</option>
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <label for="genre-filter" class="form-label">Genre</label>
+          <select id="genre-filter" class="form-select">
+            <option value="">All Genres</option>
+            <option value="science">Science</option>
+            <option value="novel">Novel</option>
+            <option value="essay">Essay</option>
+            <option value="biography">Biography</option>
+          </select>
+        </div>
+      </div>
 
   <!-- Filter end -->
       <!-- Book content -->
@@ -105,6 +126,7 @@
     <script>
       window.onload = function () {
         //load book data
+        generateCarousel()
         generateContent();
         // check if user is logged in
         let login = document.getElementById("login");
