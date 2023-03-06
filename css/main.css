@@ -6,13 +6,21 @@ Lav mere styling på books, så det ligner mere Wireframen.  */
 /* Shop page */
 
 .shop-headers {
-margin: 40px 0 40px 40px;    
+margin: 20px;
+padding: 20px 0;    
+text-align: center;
+background-color: rgb(243, 243, 243);
+border: 3px solid #28ab9c;
+border-radius: 12px;
 }
 .shop-headers h1{
     color: #28ab9c;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
-    font-size: 82px;
+    font-size: 92px;
+    text-shadow: 2px 2px #18685e;
+   
+    
 }
 .shop-headers h3{
     color: #1e8075;
