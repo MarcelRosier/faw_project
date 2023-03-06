@@ -7,10 +7,9 @@
     <title>BookWorld</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
+    <link rel="stylesheet" href="/css/reset.css" />
   </head>
   <script
     type="module"
@@ -19,8 +18,8 @@
   ></script>
   <body>
     <header>
-      <nav class="navbar navbar-light bg-white">
-        <a class="navbar-brand" href="#">
+      <nav class="navbar navbar-light">
+        <a class="navbar-brand" href="index.html">
           <img
             src="/assets/imgs/open-book.png"
             width="30"
@@ -30,24 +29,31 @@
           />
           Chapter One
         </a>
-        <a class="navbar navbar-dark ml-5" href="/src/shop.html">Shop</a>
+        <a class="navbar navbar-dark ml-auto" href="/src/shop.html">Shop</a>
         <a
-          class="navbar navbar-dark ml-auto mr-5"
+          class="navbar navbar-dark mr-1"
           style="text-align: right"
           href="/src/login.html"
           id="login"
           >Login</a
         >
         <a
-          class="navbar navbar-dark mr-5"
+          class="navbar navbar-dark mr-1"
           href="/src/register.html"
           id="register"
           >Register</a
         >
-        <a href="checkout.html">
+        <a
+          id="navbar-msg"
+          class="navbar nav-item navbar-text"
+          style="text-align: right"
+        >
+          <p>Welcome</p>
+        </a>
+        <a href="/src/checkout.html">
           <img
-            width="40"
             src="../assets/imgs/shopping-cart.png"
+            width="30"
             alt="No image to shopping cart"
           />
         </a>
@@ -92,5 +98,10 @@
         </div>
       </section>
     </header>
+    <script>
+      window.onload = function () {
+        setNavGreeting();
+      };
+    </script>
   </body>
 </html>
