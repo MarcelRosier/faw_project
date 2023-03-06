@@ -122,7 +122,7 @@ async function getBookImageDescription(title) {
           img.src = element.imageLink;
           img.setAttribute(
             "class",
-            " col-lg-7 col-xl-3 d-flex align-items-center max-width=100% max-height=100%"
+            " col-sm-12 d-flex align-items-center"
           );
 
           const res = document.getElementById("btn-add");

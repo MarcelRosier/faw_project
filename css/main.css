@@ -1,8 +1,3 @@
-/* To do: 
-Få Author og description på hver book card og pris.
-Tilføj pris til book.json?
-Lav mere styling på books, så det ligner mere Wireframen.  */
-
 /* Shop page */
 
 .shop-headers {
@@ -35,6 +30,10 @@ Lav mere styling på books, så det ligner mere Wireframen.  */
   width: 35vh;
   border-radius: 12px;
   margin-bottom: 40px;
+}
+
+.card .border-none {
+  border: none;
 }
 
 .card:hover {
