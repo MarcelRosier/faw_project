@@ -143,8 +143,10 @@ async function getBookImageDescription(title) {
           document.getElementById("authorname").innerText = element.author;
           document.getElementById("publishedyear").innerText = element.year;
           document.getElementById("bookgenre").innerText = element.genre;
+          document.getElementById("price").innerText = `${element.price}$`;
           document.getElementById("description").innerText =
             element.description;
+
           let img = document.getElementById("book-cover");
           img.src = element.imageLink;
           img.setAttribute("class", " col-sm-12 d-flex align-items-center");
