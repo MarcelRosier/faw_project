@@ -2,10 +2,8 @@ import { addToCart, getActiveUser } from "./utils.js";
 
 async function generateContent() {
   // get book data
-  let bookData = await fetch("/assets/books.json").then((response) =>
-    response.json()
-  );
-
+  let response = await fetch("/assets/books.json");
+  let bookData = await response.json();
   const languageFilter = document.getElementById("language-filter");
   const authorFilter = document.getElementById("author-filter");
   const genreFilter = document.getElementById("genre-filter");
@@ -46,9 +44,8 @@ async function generateContent() {
 }
 
 async function generateCarousel() {
-  let bookData = await fetch("/assets/books.json")
-    .then((response) => response.json())
-    .catch(() => console.log("json not found!"));
+  let response = await fetch("/assets/books.json");
+  let bookData = await response.json();
 
   bookData = bookData.splice(7);
   let carouselContent = document.getElementById("carousel-content");
