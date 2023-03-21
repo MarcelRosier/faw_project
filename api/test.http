@@ -1,0 +1,21 @@
+
+// products
+GET http://localhost:3000/products HTTP/1.1
+
+// GET - OK
+GET http://localhost:3000/products/3 HTTP/1.1
+
+// GET for non existend -> 404 
+GET http://localhost:3000/products/123123123 HTTP/1.1
+
+// GET categories
+GET http://localhost:3000/products/categories HTTP/1.1
+
+// GET by novel category
+GET http://localhost:3000/products/categories/novel HTTP/1.1
+
+// GET by science category
+GET http://localhost:3000/products/categories/science HTTP/1.1
+
+// GET by nonexisting category
+GET http://localhost:3000/products/categories/nonexisting HTTP/1.1
