@@ -20,3 +20,4 @@ GET http://localhost:3000/products/categories/science HTTP/1.1
 // GET by nonexisting category
 GET http://localhost:3000/products/categories/nonexisting HTTP/1.1
 ###
+

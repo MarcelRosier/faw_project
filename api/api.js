@@ -1,5 +1,6 @@
 import express from "express";
 import { productRouter } from "./products/products.route.js";
+import { cartRouter } from "./cart/cart.route.js"
 // import { customerRouter } from "./customers/customer.route.js";
 const app = express();
 const PORT = 3000;
@@ -8,6 +9,7 @@ const PORT = 3000;
 app.use(express.json());
 
 app.use(productRouter);
+app.use(cartRouter);
 
 app.get("/", (req, res) => res.send("Index page, Hello there!"));
 
