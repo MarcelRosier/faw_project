@@ -16,8 +16,7 @@ export async function getAll() {
   }
 }
 
-// save the users in database json file
-// save array of customers to file
+// save the users in user.json file
 async function save(users = []) {
   let usersTXT = JSON.stringify(users);
   await fs.writeFile(usersdata, usersTXT);

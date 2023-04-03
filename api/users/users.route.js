@@ -1,10 +1,10 @@
 import express from "express";
 import {
-  getAllusersdetails,
-  getUseridinfo,
-  insertUserdetails,
-  updateUserinfo,
-  deleteUserinfo,
+  getallusers,
+  getuserinfo,
+  insertuserdetails,
+  updateuserinfo,
+  deleteuser,
 } from "./users.controller.js";
 
 export const userRouter = express.Router();
@@ -15,15 +15,15 @@ userRouter.use(express.json());
 //define the routes
 
 //route to get all the users information
-userRouter.get("/users", getAllusersdetails);
+userRouter.get("/users", getallusers);
 // route to get specific user information with ID
-userRouter.get("/users/:id", getUseridinfo);
+userRouter.get("/users/:id", getuserinfo);
 
 //route to add the users information
-userRouter.post("/users", insertUserdetails);
+userRouter.post("/users", insertuserdetails);
 
 // route to update user information
-userRouter.put("/users/:id", updateUserinfo);
+userRouter.put("/users/:id", updateuserinfo);
 
 //route to delete specific user information
-userRouter.delete("/users/:id", deleteUserinfo);
+userRouter.delete("/users/:id", deleteuser);
