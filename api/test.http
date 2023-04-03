@@ -28,7 +28,8 @@ GET http://localhost:3000/users HTTP/1.1
 // create customer
 POST http://localhost:3000/users HTTP/1.1
 content-type: application/json
-{"userid":3, "email": "AnaPeterson@gmail.com","firstName": "Ana Peterson","lastName": "Ana Peterson", "password":"ana@112"}
+
+{"userid":4, "email": "AnaPeterson@gmail.com","firstName": "Ana Peterson","lastName": "Ana Peterson", "password":"ana@112"}
 ###
 
 // get user by id

@@ -1,5 +1,11 @@
 import express from "express";
-import {getAllusersdetails,getUseridinfo,insertUserdetails,updateUserinfo,deleteUserinfo} from "./users.controller.js";
+import {
+  getAllusersdetails,
+  getUseridinfo,
+  insertUserdetails,
+  updateUserinfo,
+  deleteUserinfo,
+} from "./users.controller.js";
 
 export const userRouter = express.Router();
 
@@ -21,4 +27,3 @@ userRouter.put("/users/:id", updateUserinfo);
 
 //route to delete specific user information
 userRouter.delete("/users/:id", deleteUserinfo);
-

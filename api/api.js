@@ -24,14 +24,3 @@ app.listen(PORT, (err) => {
   }
   console.log("Server listening on Port", PORT);
 });
-
-app.get("/users/:id", (req, res) => {
-  res.send(req.params);
-});
-
-app.post("/users/:id", (req, res) => {
-  res.send(`{
-    "parameters": ${JSON.stringify(req.params)}
-    "body":${JSON.stringify(req.body) }
-}`);
-});
