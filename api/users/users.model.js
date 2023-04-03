@@ -31,20 +31,18 @@ function findCustomer(userArray, Id) {
 // Post operation to save user details into file
 export async function add(newuser) {
   let userArray = await getAll();
-  console.log("test");
-  console.log(newuser);
-  if (findCustomer(userArray, newuser.userid) !== -1)
-    throw new Error(`user with Id:${newuser.userid} already exists`);
+  if (findCustomer(userArray, newuser.id) !== -1)
+    throw new Error(`user with Id:${newuser.id} already exists`);
   userArray.push(newuser);
   await save(userArray);
 }
 
 //get operation for fetching specific userdetails
 export async function getByuserID(userid) {
-  let alluserdata = await getAll();
-  let index = findCustomer(alluserdata, userid);
+  let users = await getAll();
+  let index = findCustomer(users, userid);
   if (index === -1) throw new Error(`user with ID:${userid} doesn't exist`);
-  else return customerArray[index];
+  else return users[index];
 }
 
 // PUT Request -update existing customer

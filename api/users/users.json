@@ -1,16 +1,1 @@
-[
-  {
-    "userid": 3,
-    "email": "AnaPeterson@gmail.com",
-    "firstName": "Ana Peterson",
-    "lastName": "Ana Peterson",
-    "password": "ana@112"
-  },
-  {
-    "userid": 4,
-    "email": "AnaPeterson@gmail.com",
-    "firstName": "Ana Peterson",
-    "lastName": "Ana Peterson",
-    "password": "ana@112"
-  }
-]
+[]

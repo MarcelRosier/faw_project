@@ -14,7 +14,6 @@ export async function getAllusersdetails(req, res) {
 export async function insertUserdetails(req, res) {
   try {
     let addnewuser = req.body;
-    console.log(addnewuser);
     await usermodel.add(addnewuser);
     res.end();
   } catch (error) {
