@@ -1,6 +1,7 @@
 import express from "express";
 import { productRouter } from "./products/products.route.js";
-// import { customerRouter } from "./customers/customer.route.js";
+import { userRouter } from "./users/users.route.js";
+
 const app = express();
 const PORT = 3000;
 
@@ -8,6 +9,7 @@ const PORT = 3000;
 app.use(express.json());
 
 app.use(productRouter);
+app.use(userRouter);
 
 app.get("/", (req, res) => res.send("Index page, Hello there!"));
 
@@ -21,4 +23,15 @@ app.listen(PORT, (err) => {
     console.log(`Error in server setup: ${err}`);
   }
   console.log("Server listening on Port", PORT);
+});
+
+app.get("/users/:id", (req, res) => {
+  res.send(req.params);
+});
+
+app.post("/users/:id", (req, res) => {
+  res.send(`{
+    "parameters": ${JSON.stringify(req.params)}
+    "body":${JSON.stringify(req.body) }
+}`);
 });
