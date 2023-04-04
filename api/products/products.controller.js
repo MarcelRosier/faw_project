@@ -27,6 +27,11 @@ export async function getProductById(req, res) {
     res.sendStatus(500);
   }
 }
+
+export async function fetchProductById(id) {
+  return await productModel.getProductById(id);
+}
+
 export async function getProductsByCategory(req, res) {
   try {
     let products = await productModel.getProductsByCategory(

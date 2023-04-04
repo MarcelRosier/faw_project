@@ -1,51 +1,65 @@
-import {
-    getCartModel,
-    setCartModel,
-    addToCartModel,
-    removeCartItemModel,
-  } from "./cart.model.js";
-  
-  export async function getCart(req, res) {
-    try {
-      const { email } = req.params;
-      const cart = await getCartModel(email);
-      res.status(200).json(cart);
-    } catch (error) {
-      res.sendStatus(500);
+import { read, write } from './cart.model.js';
+import { fetchProductById } from '../products/products.controller.js';
+
+export function createCart(req, res) {
+  const userId = req.params.userId;
+
+  read((err, carts) => {
+    if (err) {
+      return res.status(500).send('Error reading cart file');
     }
-  }
-  
-  export async function setCart(req, res) {
-    try {
-/*    extracts the email property from the request parameters */
-      const { email } = req.params;
-      const { cart } = req.body;
-/*    Calling setCartModel from cart.model.js with email and cart variables as argument */
-      await setCartModel(email, cart);
-      res.status(200).json({ message: "Cart saved" });
-    } catch (error) {
-      res.sendStatus(500);
+
+    if (carts[userId]) {
+      return res.status(400).send('Cart already exists for this user');
     }
-  }
-  
-  export async function addToCart(req, res) {
-    try {
-      const { email } = req.params;
-      const { item } = req.body;
-      await addToCartModel(email, item);
-      res.status(200).json({ message: "Product added to cart" });
-    } catch (error) {
-      res.sendStatus(500);
+
+    carts[userId] = [];
+    write(carts, (err) => {
+      if (err) {
+        return res.status(500).send('Error writing to cart file');
+      }
+
+      res.status(201).send('Cart created');
+    });
+  });
+}
+
+export async function addProduct(req, res) {
+  const userId = req.params.userId;
+  const productId = parseInt(req.params.productId);
+
+  try {
+    const product = await fetchProductById(productId);
+
+    if (!product) {
+      return res.status(404).send('Product not found');
     }
+
+    read((err, carts) => {
+      if (err) {
+        return res.status(500).send('Error reading cart file');
+      }
+
+      if (!carts[userId]) {
+        return res.status(404).send('Cart not found for this user');
+      }
+
+      const productIndex = carts[userId].findIndex((item) => item.id === product.id);
+
+      if (productIndex !== -1) {
+        return res.status(400).send('Product already in cart');
+      }
+
+      carts[userId].push(product);
+      write(carts, (err) => {
+        if (err) {
+          return res.status(500).send('Error writing to cart file');
+        }
+
+        res.status(201).send('Product added to cart');
+      });
+    });
+  } catch (error) {
+    res.status(500).send('Error adding product to cart');
   }
-  
-  export async function removeCartItem(req, res) {
-    try {
-      const { email, title } = req.params;
-      await removeCartItemModel(email, title);
-      res.status(200).json({ message: "Product removed from cart" });
-    } catch (error) {
-      res.sendStatus(500);
-    }
-  }
-  
+}

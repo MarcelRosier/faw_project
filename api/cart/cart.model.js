@@ -1,26 +1,28 @@
-let carts = {};
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-export function getCartModel(email) {
-  return carts[email] || new Map();
-}
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const cartFile = path.join(__dirname, 'cart.json');
 
-export function setCartModel(email, cart) {
-  carts[email] = cart;
-}
-
-export function addToCartModel(email, item) {
-  let cart = getCart(email);
-  let existingCartItem = cart.get(item.title);
-  cart.set(item.title, {
-    book: item,
-    quantity:
-      existingCartItem === undefined ? 1 : +existingCartItem.quantity + 1,
+export function read(callback) {
+  fs.readFile(cartFile, (err, data) => {
+    if (err) {
+      return callback(err);
+    }
+    callback(null, JSON.parse(data));
   });
-  setCart(email, cart);
 }
 
-export function removeCartItemModel(email, title) {
-  let cart = getCart(email);
-  cart.delete(title);
-  setCart(email, cart);
+export function write(carts, callback) {
+  fs.writeFile(cartFile, JSON.stringify(carts), (err) => {
+    if (err) {
+      return callback(err);
+    }
+    callback(null);
+  });
 }
+
+export default { read, write };

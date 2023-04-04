@@ -21,3 +21,5 @@ GET http://localhost:3000/products/categories/science HTTP/1.1
 GET http://localhost:3000/products/categories/nonexisting HTTP/1.1
 ###
 
+GET http://localhost:3000/cart/1 HTTP/1.1
+###

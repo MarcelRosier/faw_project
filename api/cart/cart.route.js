@@ -1,18 +1,15 @@
-import express from "express";
+import express from 'express';
 import {
-  getCart,
-  setCart,
-  addToCart,
-  removeCartItem
-} from "./cart.controller.js";
+  createCart,
+   addProduct
+  } from './cart.controller.js';
 
-export const cartRouter = express.Router();
+export const router = express.Router();
 
-/* GET route with the path '/:email'. When GET request is made to this path the 'getCart' function from the cart.controller.js will be called */
-cartRouter.get('/:email', getCart);
+router.post('/cart/:userId', createCart);
+router.post('/cart/:userId/:productId', addProduct);
+/* router.delete('/cart/:userId/:productId', removeProduct);
+router.get('/cart/:userId', getCart); */
 
-cartRouter.post('/:email', setCart);
+export default router;
 
-cartRouter.post('/:email/add', addToCart);
-/* DELETE route with path '/:email/remove/:title'. ':title' parameter is the title of the item to be removed */
-cartRouter.delete('/:email/remove/:title', removeCartItem);
