@@ -6,7 +6,7 @@ export async function getallusers(req, res) {
     let allusers = await usermodel.getAll();
     res.json(allusers);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(500).send(error.message);
   }
 }
 
@@ -28,7 +28,7 @@ export async function getuserinfo(req, res) {
     let user = await usermodel.getByuserID(id);
     res.json(user);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(404).send(error.message);
   }
 }
 
@@ -51,6 +51,6 @@ export async function deleteuser(req, res) {
     await usermodel.remove(id);
     res.end();
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(500).send(error.message);
   }
 }
