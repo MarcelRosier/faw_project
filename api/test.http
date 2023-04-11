@@ -1,5 +1,5 @@
 
-// products
+#### Products ####
 GET http://localhost:3000/products HTTP/1.1
 ###
 // GET - OK
@@ -21,5 +21,20 @@ GET http://localhost:3000/products/categories/science HTTP/1.1
 GET http://localhost:3000/products/categories/nonexisting HTTP/1.1
 ###
 
+#### Cart ####
+
+//POST create cart for userID - /cart/:userId
+POST http://localhost:3000/cart/1 HTTP/1.1
+###
+
+//POST add product for userID - /cart/:userId/:productId
+POST http://localhost:3000/cart/1/1 HTTP/1.1
+###
+
+//DELETE product for userID - /cart/:userId/:productId
+DELETE http://localhost:3000/cart/1/1 HTTP/1.1
+###
+
+//GET cart by userID - /cart/:userId
 GET http://localhost:3000/cart/1 HTTP/1.1
 ###
