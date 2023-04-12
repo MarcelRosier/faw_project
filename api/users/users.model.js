@@ -1,10 +1,10 @@
 import * as fs from "fs/promises";
-const usersdata = "api/users/users.json";
+const USERS_DATA = "api/users/users.json";
 
 // return all users from file
 export async function getAll() {
   try {
-    let userTxt = await fs.readFile(usersdata);
+    let userTxt = await fs.readFile(USERS_DATA);
     let users = JSON.parse(userTxt);
     return users;
   } catch (err) {
@@ -19,7 +19,7 @@ export async function getAll() {
 // save the users in user.json file
 async function save(users = []) {
   let usersTXT = JSON.stringify(users);
-  await fs.writeFile(usersdata, usersTXT);
+  await fs.writeFile(USERS_DATA, usersTXT);
 }
 
 // test function for finding userid exists or not
