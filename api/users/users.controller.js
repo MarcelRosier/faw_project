@@ -15,7 +15,7 @@ export async function insertUserDetails(req, res) {
   try {
     let addnewuser = req.body;
     await userModel.add(addnewuser);
-    res.end();
+    res.sendStatus(201);
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -38,7 +38,7 @@ export async function updateUserInfo(req, res) {
     let id = parseInt(req.params.id);
     let user = req.body;
     await userModel.update(id, user);
-    res.end();
+    res.sendStatus(200);
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -49,7 +49,7 @@ export async function deleteUser(req, res) {
   try {
     let id = parseInt(req.params.id);
     await userModel.remove(id);
-    res.end();
+    res.sendStatus(204);
   } catch (error) {
     res.status(500).send(error.message);
   }
