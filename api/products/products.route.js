@@ -1,4 +1,3 @@
-// index.js
 import express from "express";
 import {
   getProducts,
