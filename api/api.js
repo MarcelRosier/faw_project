@@ -4,6 +4,8 @@ import { productRouter } from "./products/products.route.js";
 import { cartRouter } from "./cart/cart.route.js"
 
 // import { customerRouter } from "./customers/customer.route.js";
+import { userRouter } from "./users/users.route.js";
+
 const app = express();
 const PORT = 3000;
 
@@ -13,6 +15,7 @@ app.use(express.json());
 app.use(productRouter);
 app.use(bodyParser.json());
 app.use(cartRouter);
+app.use(userRouter);
 
 app.get("/", (req, res) => res.send("Index page, Hello there!"));
 
