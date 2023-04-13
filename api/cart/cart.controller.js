@@ -14,7 +14,6 @@ export async function addProduct(req, res) {
         return res.status(500).send('error reading cart');
       }
 
-      // Check if cart exists, and create a new one if it doesn't
       let cart = carts[cartId];
       if (!cart || cart.userId !== userId) {
         cart = {
