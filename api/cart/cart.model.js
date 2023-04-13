@@ -25,4 +25,8 @@ export function write(carts, callback) {
   });
 }
 
+export function findProductIndex(cart, productId) {
+  return cart.items.findIndex(item => item.productId === productId);
+}
+
 export default { read, write };

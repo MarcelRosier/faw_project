@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from 'body-parser';
 import { productRouter } from "./products/products.route.js";
-import { router } from "./cart/cart.route.js"
+import { cartRouter } from "./cart/cart.route.js"
 
 // import { customerRouter } from "./customers/customer.route.js";
 const app = express();
@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use(productRouter);
 app.use(bodyParser.json());
-app.use(router);
+app.use(cartRouter);
 
 app.get("/", (req, res) => res.send("Index page, Hello there!"));
 

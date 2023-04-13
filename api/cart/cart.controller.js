@@ -1,9 +1,10 @@
-import { read, write } from './cart.model.js';
+import { read, write, findProductIndex } from './cart.model.js';
 import { fetchProductById } from '../products/products.controller.js';
 
+/* Add product to cart with {cartId}*/
 export async function addProduct(req, res) {
-  const userId = req.params.userId;
-  const { productId } = req.body;
+  const cartId = req.params.cartId;
+  const { userId, productId } = req.body;
 
   try {
     const product = await fetchProductById(productId);
@@ -13,20 +14,22 @@ export async function addProduct(req, res) {
         return res.status(500).send('error reading cart');
       }
 
-      if (!carts[userId]) {
-        carts[userId] = [];
+      const cart = carts[cartId];
+
+      if (!cart || cart.userId !== userId) {
+        return res.status(404).send('Cart not found for user');
       }
 
-    const existingCartItemIndex = carts[userId].findIndex(item => item.productId === product.id);
+      const existingCartItemIndex = findProductIndex(cart, product.id);
 
       if (existingCartItemIndex !== -1) {
-        carts[userId][existingCartItemIndex].quantity += 1;
+        cart.items[existingCartItemIndex].quantity += 1;
       } else {
         const cartItem = {
           productId: product.id,
           quantity: 1,
         };
-        carts[userId].push(cartItem);
+        cart.items.push(cartItem);
       }
 
       write(carts, (err) => {
@@ -42,25 +45,29 @@ export async function addProduct(req, res) {
   }
 }
 
+
+/* Delete product from cart with {cartId}*/
 export function removeProduct(req, res) {
-  const userId = req.params.userId;
-  const { productId } = req.body;
+  const cartId = req.params.cartId;
+  const { userId, productId } = req.body;
 
   read((err, carts) => {
     if (err) {
       return res.status(500).send('Error reading cart');
     }
 
-    if (!carts[userId]) {
+    const cart = carts[cartId];
+
+    if (!cart || cart.userId !== userId) {
       return res.status(404).send('cart not found for user');
     }
 
-    const productIndex = carts[userId].findIndex(item => item.productId === productId);
+    const productIndex = findProductIndex(cart, productId);
     if (productIndex === -1) {
       return res.status(404).send('Product not found in cart');
     }
 
-    carts[userId].splice(productIndex, 1);
+    cart.items.splice(productIndex, 1);
     write(carts, (err) => {
       if (err) {
         return res.status(500).send('error adding to cart');
@@ -71,15 +78,17 @@ export function removeProduct(req, res) {
   });
 }
 
+
+/* Get cart with {cartId} */
 export function getCart(req, res) {
-  const userId = req.params.userId;
+  const cartId = req.params.cartId;
 
   read((err, carts) => {
     if (err) {
       return res.status(500).send('Error reading cart');
     }
 
-    const cart = carts[userId];
+    const cart = carts[cartId];
 
     if (!cart) {
       return res.status(404).send('Cart not found for this user');

@@ -5,11 +5,11 @@ import {
    getCart
   } from './cart.controller.js';
 
-export const router = express.Router();
+export const cartRouter = express.Router();
 
-router.post('/cart/:userId', addProduct);
-router.delete('/cart/:userId', removeProduct);
-router.get('/cart/:userId', getCart);
+cartRouter.post('/cart/:cartId', addProduct);
+cartRouter.delete('/cart/:cartId', removeProduct);
+cartRouter.get('/cart/:cartId', getCart);
 
-export default router;
+export default cartRouter;
 
