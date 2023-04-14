@@ -25,25 +25,32 @@ GET http://localhost:3000/products/categories/nonexisting HTTP/1.1
 
 //POST add {productId} for {cartId} - /cart/:cartId
 POST http://localhost:3000/cart/1/ HTTP/1.1
+content-type: application/json
+
+{
+  "productId": 2,
+  "userId": 2
+}
 //JSON body (example)
-//{
-//  "productId": 2,
-//  "userId": 1
-//}
+
 ###
 
 //DELETE {productId} for {userID} - /cart/:cartId
 DELETE http://localhost:3000/cart/1 HTTP/1.1
-//JSON body (example)
-//{
-//  "productId": 1,
-//  "userId": 1
-//}
+content-type: application/json
+
+{
+  "productId": 1,
+  "userId": 1
+}
+
 ###
 
 //GET cart by cartID - /cart/:cartId
-GET http://localhost:3000/cart/1 HTTP/1.1
+GET http://localhost:3000/cart/3 HTTP/1.1
 ###
+
+
 // GET ALL USERS DETAILS
 GET http://localhost:3000/users HTTP/1.1
 ###
