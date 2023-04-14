@@ -14,10 +14,13 @@ export async function addProduct(req, res) {
         return res.status(500).send('error reading cart');
       }
 
-      const cart = carts[cartId];
-
+      let cart = carts[cartId];
       if (!cart || cart.userId !== userId) {
-        return res.status(404).send('Cart not found for user');
+        cart = {
+          userId: userId,
+          items: [],
+        };
+        carts[cartId] = cart;
       }
 
       const existingCartItemIndex = findProductIndex(cart, product.id);
