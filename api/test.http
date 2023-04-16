@@ -24,26 +24,43 @@ GET http://localhost:3000/products/categories/nonexisting HTTP/1.1
 #### Cart ####
 
 //POST add {productId} for {cartId} - /cart/:cartId
-POST http://localhost:3000/cart/1/ HTTP/1.1
+POST http://localhost:3000/carts HTTP/1.1
+content-type: application/json
+
+{
+  "userId": 1,
+  "productId": 1,
+  "cartId": 1
+}
 //JSON body (example)
-//{
-//  "productId": 2,
-//  "userId": 1
-//}
+
 ###
 
 //DELETE {productId} for {userID} - /cart/:cartId
-DELETE http://localhost:3000/cart/1 HTTP/1.1
+DELETE http://localhost:3000/carts HTTP/1.1
+content-type: application/json
+
+{
+  "userId": 1,
+  "productId": 1,
+  "cartId": 1
+}
 //JSON body (example)
-//{
-//  "productId": 1,
-//  "userId": 1
-//}
+
 ###
 
 //GET cart by cartID - /cart/:cartId
-GET http://localhost:3000/cart/1 HTTP/1.1
+GET http://localhost:3000/carts HTTP/1.1
+content-type: application/json
+
+{
+  "cartId": 1
+}
+//JSON body (example)
+
 ###
+
+
 // GET ALL USERS DETAILS
 GET http://localhost:3000/users HTTP/1.1
 ###

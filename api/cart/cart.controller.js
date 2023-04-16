@@ -1,102 +1,74 @@
-import { read, write, findProductIndex } from './cart.model.js';
+import { read, write, addProductToCart, removeProductFromCart, getCartById } from './cart.model.js';
 import { fetchProductById } from '../products/products.controller.js';
 
-/* Add product to cart with {cartId}*/
+/* Add product to cart*/
 export async function addProduct(req, res) {
-  const cartId = req.params.cartId;
-  const { userId, productId } = req.body;
+  const { cartId, userId, productId } = req.body;
 
   try {
     const product = await fetchProductById(productId);
 
-    read((err, carts) => {
+    read(async (err, carts) => {
       if (err) {
         return res.status(500).send('error reading cart');
       }
 
-      let cart = carts[cartId];
-      if (!cart || cart.userId !== userId) {
-        cart = {
-          userId: userId,
-          items: [],
-        };
-        carts[cartId] = cart;
+      try {
+        const updatedCarts = await addProductToCart(carts, cartId, userId, product);
+        write(updatedCarts, (err) => {
+          if (err) {
+            return res.status(500).send('Error adding to cart');
+          }
+
+          res.status(201).send('product added to cart');
+        });
+      } catch (error) {
+        res.status(404).send(error.message);
       }
-
-      const existingCartItemIndex = findProductIndex(cart, product.id);
-
-      if (existingCartItemIndex !== -1) {
-        cart.items[existingCartItemIndex].quantity += 1;
-      } else {
-        const cartItem = {
-          productId: product.id,
-          quantity: 1,
-        };
-        cart.items.push(cartItem);
-      }
-
-      write(carts, (err) => {
-        if (err) {
-          return res.status(500).send('Error adding to cart');
-        }
-
-        res.status(201).send('product added to cart');
-      });
     });
   } catch (error) {
     res.status(500).send('Error getting product');
   }
 }
 
-
-/* Delete product from cart with {cartId}*/
+/* Delete product from cart */
 export function removeProduct(req, res) {
-  const cartId = req.params.cartId;
-  const { userId, productId } = req.body;
+  const { cartId, userId, productId } = req.body;
 
   read((err, carts) => {
     if (err) {
       return res.status(500).send('Error reading cart');
     }
 
-    const cart = carts[cartId];
+    try {
+      const updatedCarts = removeProductFromCart(carts, cartId, userId, productId);
+      write(updatedCarts, (err) => {
+        if (err) {
+          return res.status(500).send('error removing from cart');
+        }
 
-    if (!cart || cart.userId !== userId) {
-      return res.status(404).send('cart not found for user');
+        res.status(200).send('product removed from cart');
+      });
+    } catch (error) {
+      res.status(404).send(error.message);
     }
-
-    const productIndex = findProductIndex(cart, productId);
-    if (productIndex === -1) {
-      return res.status(404).send('Product not found in cart');
-    }
-
-    cart.items.splice(productIndex, 1);
-    write(carts, (err) => {
-      if (err) {
-        return res.status(500).send('error adding to cart');
-      }
-
-      res.status(200).send('product removed from cart');
-    });
   });
 }
 
-
-/* Get cart with {cartId} */
+/* Get cart */
 export function getCart(req, res) {
-  const cartId = req.params.cartId;
+  const { cartId } = req.body;
 
   read((err, carts) => {
     if (err) {
       return res.status(500).send('Error reading cart');
     }
 
-    const cart = carts[cartId];
-
-    if (!cart) {
-      return res.status(404).send('Cart not found for this user');
+    try {
+      const cart = getCartById(carts, cartId);
+      res.status(200).json(cart);
+    } catch (error) {
+      res.status(404).send(error.message);
     }
-
-    res.status(200).json(cart);
   });
 }
