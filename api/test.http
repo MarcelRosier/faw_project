@@ -23,31 +23,41 @@ GET http://localhost:3000/products/categories/nonexisting HTTP/1.1
 
 #### Cart ####
 
-//POST add {productId} for {cartId} - /cart/:cartId
-POST http://localhost:3000/cart/1/ HTTP/1.1
+//POST add {productId} and {userId} to {cartId}
+POST http://localhost:3000/carts HTTP/1.1
 content-type: application/json
 
 {
-  "productId": 2,
-  "userId": 2
+  "userId": 1,
+  "productId": 1,
+  "cartId": 1
 }
 //JSON body (example)
 
 ###
 
-//DELETE {productId} for {userID} - /cart/:cartId
-DELETE http://localhost:3000/cart/1 HTTP/1.1
+//DELETE {productId} for {userID} in {cartId}
+DELETE http://localhost:3000/carts HTTP/1.1
 content-type: application/json
 
 {
+  "userId": 1,
   "productId": 1,
-  "userId": 1
+  "cartId": 1
 }
+//JSON body (example)
 
 ###
 
-//GET cart by cartID - /cart/:cartId
-GET http://localhost:3000/cart/3 HTTP/1.1
+//GET cart by {cartId}
+GET http://localhost:3000/carts HTTP/1.1
+content-type: application/json
+
+{
+  "cartId": 1
+}
+//JSON body (example)
+
 ###
 
 

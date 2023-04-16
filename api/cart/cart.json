@@ -1,10 +1,1 @@
-{
-  "1": {
-    "userId": 1,
-    "items": [
-      { "productId": 2, "quantity": 5 },
-      { "productId": 1, "quantity": 1 }
-    ]
-  },
-  "2": { "userId": 2, "items": [{ "productId": 2, "quantity": 5 }] }
-}
+{"1":{"userId":1,"items":[{"productId":1,"quantity":1}]}}
