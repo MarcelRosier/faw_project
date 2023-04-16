@@ -59,12 +59,11 @@ export async function addProductToCart(carts, cartId, userId, product) {
   return carts;
 }
 
-
 export function removeProductFromCart(carts, cartId, userId, productId) {
   const cart = carts[cartId];
 
   if (!cart || cart.userId !== userId) {
-    throw new Error("Cart not found for user");
+    throw new Error("Cart does not belong to given user");
   }
 
   const productIndex = findProductIndex(cart, productId);
@@ -75,7 +74,6 @@ export function removeProductFromCart(carts, cartId, userId, productId) {
   cart.items.splice(productIndex, 1);
   return carts;
 }
-
 
 export function getCartById(carts, cartId) {
   const cart = carts[cartId];
