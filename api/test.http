@@ -32,31 +32,32 @@ content-type: application/json
   "productId": 1,
   "cartId": 1
 }
-//JSON body (example)
 
 ###
 
 //DELETE {productId} for {userID} in {cartId}
-DELETE http://localhost:3000/carts HTTP/1.1
+DELETE http://localhost:3000/carts/1 HTTP/1.1
 content-type: application/json
 
 {
   "userId": 1,
-  "productId": 1,
-  "cartId": 1
+  "productId": 1
 }
-//JSON body (example)
+###
+
+//DELETE for wrong user id => error message
+DELETE http://localhost:3000/carts/1 HTTP/1.1
+content-type: application/json
+
+{
+  "userId": 42,
+  "productId": 1
+}
 
 ###
 
 //GET cart by {cartId}
-GET http://localhost:3000/carts HTTP/1.1
-content-type: application/json
-
-{
-  "cartId": 1
-}
-//JSON body (example)
+GET http://localhost:3000/carts/1 HTTP/1.1
 
 ###
 
