@@ -10,7 +10,7 @@ export const Hero = () => {
         Explore endless worlds, <br />
         one <strong>book</strong> at a time.
       </p>
-      <a className="btn btn-light btn-lg m-3" href="/test"
+      <a className="btn btn-light btn-lg m-3" href="/shop"
         >Start exploring</a
       >
     </header>
