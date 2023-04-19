@@ -2,7 +2,16 @@ import React from "react";
 import { Book } from "../../models/book.models";
 import { message } from "react-message-popup";
 
+async function addToBasket(book: Book) {
+  //TODO Call api
+  // fetch ...
+  // alert user that operation was sucessful
+  message.success(`Added '${book.title}' to cart!`, 2000);
+}
 export const BookCard = (props: { book: Book }) => {
+  const handleAdd = (event: any) => {
+    addToBasket(props.book);
+  };
   return (
     <div className="col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex align-items-stretch justify-content-center">
       <div className="card">
@@ -19,10 +28,7 @@ export const BookCard = (props: { book: Book }) => {
           <p className="card-text price">{`${(+props.book.price).toFixed(
             2
           )}$`}</p>
-          <button
-            className="btn btn-primary col-12"
-            onClick={() => message.success("(TBD!) Added to cart", 2000)}
-          >
+          <button className="btn btn-primary col-12" onClick={handleAdd}>
             Add to cart
           </button>
         </div>
