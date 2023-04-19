@@ -4,7 +4,7 @@ import { CarouselItem } from "react-bootstrap";
 
 export const ShopFeaturedItem = (props: { book: Book }) => {
   return (
-    <a href="/">
+    <a href={`/details/${props.book.id}`}>
       <img src={props.book.imageLink} alt={`img for ${props.book.title}`} />
     </a>
   );
