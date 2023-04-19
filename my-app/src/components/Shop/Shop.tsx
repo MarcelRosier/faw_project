@@ -1,13 +1,15 @@
-import React from 'react'
-
+import React from "react";
+import { NavBar } from "../NavBar/NavBar";
+import { ShopHeaders } from "./ShopHeaders";
+import { ShopFeatured } from "./ShopFeatured";
+import "./Shop.css";
 
 export const Shop = () => {
-
   return (
     <div>
-        <h1>TODO Shop</h1>
-        <a href='/'>Back to index</a>
+      <NavBar />
+      <ShopHeaders />
+      <ShopFeatured />
     </div>
-    
-  )
-}
+  );
+};
