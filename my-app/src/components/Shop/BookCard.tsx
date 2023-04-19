@@ -1,5 +1,6 @@
 import React from "react";
 import { Book } from "../../models/book.models";
+import { message } from "react-message-popup";
 
 export const BookCard = (props: { book: Book }) => {
   return (
@@ -20,7 +21,7 @@ export const BookCard = (props: { book: Book }) => {
           )}$`}</p>
           <button
             className="btn btn-primary col-12"
-            onClick={() => alert("TBD")}
+            onClick={() => message.success("(TBD!) Added to cart", 2000)}
           >
             Add to cart
           </button>
