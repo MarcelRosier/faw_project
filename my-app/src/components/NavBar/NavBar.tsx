@@ -1,6 +1,4 @@
 import React from "react";
-import logo from "../../assets/images/logo.png";
-import cartImg from "../../assets/images/shopping-cart.png";
 
 export const NavBar = () => {
   return (
@@ -8,7 +6,7 @@ export const NavBar = () => {
       <nav className="navbar navbar-light">
         <a className="navbar-brand" href="/">
           <img
-            src={logo}
+            src="/images/logo.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
@@ -38,7 +36,11 @@ export const NavBar = () => {
           Welcome
         </a>
         <a href="/carts/1">
-          <img src={cartImg} width="30" alt="No image to shopping cart" />
+          <img
+            src="/images/shopping-cart.png"
+            width="30"
+            alt="No image to shopping cart"
+          />
         </a>
       </nav>
     </header>
