@@ -18,7 +18,12 @@ export const BookCard = (props: { book: Book }) => {
           <p className="card-text price">{`${(+props.book.price).toFixed(
             2
           )}$`}</p>
-          <button className="btn btn-primary col-12">Add to cart</button>
+          <button
+            className="btn btn-primary col-12"
+            onClick={() => alert("TBD")}
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
