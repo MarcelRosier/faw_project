@@ -9,7 +9,10 @@ const data: Book[] = [...bookData].splice(7);
 export const ShopFeatured = () => {
   const [index, setIndex] = useState(0);
 
-  const handleSelect = (selectedIndex: number, e: any) => {
+  const handleSelect = (
+    selectedIndex: number,
+    e: Record<string, unknown> | null
+  ) => {
     setIndex(selectedIndex);
   };
   return (

@@ -26,19 +26,19 @@ export const ShopFilter = (props: {
 }) => {
   // TODO: refactor, not clean code
   const [language, setLanguage] = React.useState("");
-  const onLanguageChange = (event: any) => {
+  const onLanguageChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     setLanguage(value);
     filterBooks(value, author, genre, props.setBooks);
   };
   const [author, setAuthor] = React.useState("");
-  const onAuthorChange = (event: any) => {
+  const onAuthorChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     setAuthor(value);
     filterBooks(language, value, genre, props.setBooks);
   };
   const [genre, setGenre] = React.useState("");
-  const onGenreChange = (event: any) => {
+  const onGenreChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     setGenre(value);
     filterBooks(language, author, value, props.setBooks);

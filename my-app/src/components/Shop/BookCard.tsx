@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 import { Book } from "../../models/book.models";
 import { message } from "react-message-popup";
 
@@ -9,7 +9,7 @@ async function addToBasket(book: Book) {
   message.success(`Added '${book.title}' to cart!`, 2000);
 }
 export const BookCard = (props: { book: Book }) => {
-  const handleAdd = (event: any) => {
+  const handleAdd = (event: MouseEvent) => {
     addToBasket(props.book);
   };
   return (
