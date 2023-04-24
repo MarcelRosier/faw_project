@@ -1,6 +1,7 @@
 import React, { MouseEvent } from "react";
 import { Book } from "../../models/book.models";
 import { message } from "react-message-popup";
+import { NavLink } from "react-router-dom";
 
 async function addToBasket(book: Book) {
   //TODO Call api
@@ -15,13 +16,13 @@ export const BookCard = (props: { book: Book }) => {
   return (
     <div className="col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex align-items-stretch justify-content-center">
       <div className="card">
-        <a href={`/details/${props.book.id}`}>
+        <NavLink to={`/details/${props.book.id}`}>
           <img
             className="card-img-top"
             src={props.book.imageLink}
             alt={`img for ${props.book.title}`}
           />
-        </a>
+        </NavLink>
         <div className="card-body">
           <h5 className="card-title">{props.book.title}</h5>
           <p className="card-text">{props.book.author}</p>
