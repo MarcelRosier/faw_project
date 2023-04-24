@@ -2,7 +2,7 @@
   {
     "title": "Chaos: Making a New Science",
     "author": "James Gleick",
-    "imageLink": "/assets/imgs/chaos.png",
+    "imageLink": "images/chaos.png",
     "language": "English",
     "pages": 400,
     "year": 1987,
@@ -14,7 +14,7 @@
   {
     "title": "The Stranger",
     "author": "Albert Camus",
-    "imageLink": "/assets/imgs/the_stranger.jpg",
+    "imageLink": "images/the_stranger.jpg",
     "language": "English",
     "pages": 159,
     "year": 1942,
@@ -26,7 +26,7 @@
   {
     "title": "Vom Ende der Einsamkeit",
     "author": "Benedict Wells",
-    "imageLink": "/assets/imgs/vom_ende_der_einsamkeit.jpeg",
+    "imageLink": "images/vom_ende_der_einsamkeit.jpeg",
     "language": "German",
     "pages": 463,
     "year": 2016,
@@ -38,7 +38,7 @@
   {
     "title": "Utopia for Realists",
     "author": "Rutger Bregman",
-    "imageLink": "/assets/imgs/utopia-for-realists.jpeg",
+    "imageLink": "images/utopia-for-realists.jpeg",
     "language": "English",
     "pages": 288,
     "year": 2014,
@@ -50,7 +50,7 @@
   {
     "title": "The Myth of Sisyphus",
     "author": "Albert Camus",
-    "imageLink": "/assets/imgs/the_myth_of_sisyphus.jpeg",
+    "imageLink": "images/the_myth_of_sisyphus.jpeg",
     "language": "English",
     "pages": 166,
     "year": 1942,
@@ -62,7 +62,7 @@
   {
     "title": "Alan Turing: The Enigma",
     "author": "Andrew Hodges",
-    "imageLink": "/assets/imgs/alan_turing_the_enigma.jpeg",
+    "imageLink": "images/alan_turing_the_enigma.jpeg",
     "language": "English",
     "pages": 587,
     "year": 1983,
@@ -74,7 +74,7 @@
   {
     "title": "A Beautiful Mind",
     "author": "Sylvia Nasar",
-    "imageLink": "/assets/imgs/a_beautiful_mind.jpeg",
+    "imageLink": "images/a_beautiful_mind.jpeg",
     "language": "English",
     "pages": 460,
     "year": 1998,
@@ -86,7 +86,7 @@
   {
     "title": "The Kaiju Preservation Society",
     "author": "John Scalzi",
-    "imageLink": "/assets/imgs/Kaiju_reservation_society.png",
+    "imageLink": "images/Kaiju_reservation_society.png",
     "language": "English",
     "pages": 272,
     "year": 2023,
@@ -98,7 +98,7 @@
   {
     "title": "Children of Memory",
     "author": "Adrian Tchaikovsky",
-    "imageLink": "/assets/imgs/Children_of_memory.png",
+    "imageLink": "images/Children_of_memory.png",
     "language": "English",
     "pages": 496,
     "year": 2022,
@@ -110,7 +110,7 @@
   {
     "title": "Girls Can Kiss Now",
     "author": "Jill Gutowitz",
-    "imageLink": "/assets/imgs/GirlsCanKissNow.png",
+    "imageLink": "images/GirlsCanKissNow.png",
     "language": "English",
     "pages": 240,
     "year": 2022,
@@ -122,7 +122,7 @@
   {
     "title": "Dear Damage",
     "author": "Ashley Marie Farmer",
-    "imageLink": "/assets/imgs/DearDamage.png",
+    "imageLink": "images/DearDamage.png",
     "language": "English",
     "pages": 200,
     "year": 2022,
@@ -134,7 +134,7 @@
   {
     "title": "Up All Night",
     "author": "Laura Silverman",
-    "imageLink": "/assets/imgs/UpAllNight.png",
+    "imageLink": "images/UpAllNight.png",
     "language": "English",
     "pages": 352,
     "year": 2021,
