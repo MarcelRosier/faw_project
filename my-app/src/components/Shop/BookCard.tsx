@@ -1,17 +1,39 @@
-import React, { MouseEvent } from "react";
+import React, { MouseEvent, useContext } from "react";
 import { Book } from "../../models/book.models";
 import { message } from "react-message-popup";
 import { NavLink } from "react-router-dom";
+import { User } from "../../models/user.models";
+import { CurrentUserContext } from "../../App";
+import { API_HOST } from "../../constants";
 
-async function addToBasket(book: Book) {
+async function addToBasket(book: Book, user: User) {
   //TODO Call api
   // fetch ...
-  // alert user that operation was sucessful
-  message.success(`Added '${book.title}' to cart!`, 2000);
+  const params = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      userId: user.id,
+      productId: book.id,
+      cartId: user.id, // TODO: change this to proper id later
+    }),
+  };
+  try {
+    let response = await fetch(`${API_HOST}/carts`, params);
+    // alert user that operation was sucessful
+    if (response.ok) {
+      message.success(`Added '${book.title}' to cart!`, 2000);
+    }
+  } catch (error) {
+    message.error(
+      "Whoopsie! An error occured while adding your item to the basket"
+    );
+  }
 }
 export const BookCard = (props: { book: Book }) => {
+  const { user, setUser } = useContext(CurrentUserContext);
   const handleAdd = (event: MouseEvent) => {
-    addToBasket(props.book);
+    addToBasket(props.book, user);
   };
   return (
     <div className="col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex align-items-stretch justify-content-center">
