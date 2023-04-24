@@ -1,8 +1,13 @@
 import * as fs from "fs/promises";
-const PRODUCT_DB = "api/id_books.json";
+const PRODUCT_DB = "api/books.json";
 
 export async function getProducts() {
   return JSON.parse(await fs.readFile(PRODUCT_DB));
+}
+
+export async function getFeaturedProducts() {
+  let db = JSON.parse(await fs.readFile(PRODUCT_DB));
+  return db.splice(7);
 }
 
 export async function getProductCategories() {

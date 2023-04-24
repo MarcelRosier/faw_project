@@ -7,6 +7,15 @@ export async function getProducts(req, res) {
     res.sendStatus(500);
   }
 }
+
+export async function getFeaturedProducts(req, res) {
+  try {
+    res.json(await productModel.getFeaturedProducts());
+  } catch (error) {
+    res.sendStatus(500);
+  }
+}
+
 export async function getProductCategories(req, res) {
   try {
     res.json(await productModel.getProductCategories());
