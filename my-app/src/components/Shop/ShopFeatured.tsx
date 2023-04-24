@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-// import bookData from "../../assets/books.json";
 import { ShopFeaturedItem } from "./ShopFeaturedItem";
 import { Carousel } from "react-bootstrap";
 import { Book } from "../../models/book.models";
 import { API_HOST } from "../../constants";
-
-// const data: Book[] = [...bookData].splice(7);
+import { message } from "react-message-popup";
 
 async function fetchFeaturedBooks(setFtrBooks: (value: Book[]) => void) {
-  const response = await fetch(`${API_HOST}/products/featured`);
-  if (response.ok) {
-    let books: Book[] = await response.json();
-    setFtrBooks(books);
+  try {
+    const response = await fetch(`${API_HOST}/products/featured`);
+    if (response.ok) {
+      let books: Book[] = await response.json();
+      setFtrBooks(books);
+    }
+  } catch (error) {
+    message.error(`Error while featching featured books: ${error}`, 2500);
   }
 }
 

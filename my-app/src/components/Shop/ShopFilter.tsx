@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect } from "react";
 import { Book } from "../../models/book.models";
 import { API_HOST } from "../../constants";
+import { message } from "react-message-popup";
 
 async function filterBooks(
   language: string,
@@ -8,20 +9,24 @@ async function filterBooks(
   genre: string,
   setBooks: (value: Book[]) => void
 ) {
-  // TODO: maybe move filtering to backend?
-  const response = await fetch(`${API_HOST}/products`);
-  if (!response.ok) {
-    throw Error("Error fetching books");
+  try {
+    // TODO: maybe move filtering to backend?
+    const response = await fetch(`${API_HOST}/products`);
+    if (!response.ok) {
+      throw Error("Error fetching books");
+    }
+    let books: Book[] = await response.json();
+    let filteredBooks = books.filter((book: Book) => {
+      return (
+        (language === "" || book.language === language) &&
+        (author === "" || book.author === author) &&
+        (genre === "" || book.genre === genre)
+      );
+    });
+    setBooks(filteredBooks);
+  } catch (error) {
+    message.error(`Error while featching book data: ${error}`, 2500);
   }
-  let books: Book[] = await response.json();
-  let filteredBooks = books.filter((book: Book) => {
-    return (
-      (language === "" || book.language === language) &&
-      (author === "" || book.author === author) &&
-      (genre === "" || book.genre === genre)
-    );
-  });
-  setBooks(filteredBooks);
 }
 
 export const ShopFilter = (props: {
