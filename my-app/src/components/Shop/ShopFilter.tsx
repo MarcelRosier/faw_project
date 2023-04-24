@@ -1,16 +1,20 @@
-import React, { ChangeEvent, useState } from "react";
-import { Book, Books } from "../../models/book.models";
-import { CarouselItem } from "react-bootstrap";
-import bookData from "../../assets/books.json";
+import React, { ChangeEvent, useEffect } from "react";
+import { Book } from "../../models/book.models";
+import { API_HOST } from "../../constants";
 
-function filterBooks(
+async function filterBooks(
   language: string,
   author: string,
   genre: string,
   setBooks: (value: Book[]) => void
 ) {
-  const data: Book[] = [...bookData];
-  let filteredBooks = data.filter((book: Book) => {
+  // TODO: maybe move filtering to backend?
+  const response = await fetch(`${API_HOST}/products`);
+  if (!response.ok) {
+    throw Error("Error fetching books");
+  }
+  let books: Book[] = await response.json();
+  let filteredBooks = books.filter((book: Book) => {
     return (
       (language === "" || book.language === language) &&
       (author === "" || book.author === author) &&
@@ -43,6 +47,10 @@ export const ShopFilter = (props: {
     setGenre(value);
     filterBooks(language, author, value, props.setBooks);
   };
+
+  useEffect(() => {
+    filterBooks(language, author, genre, props.setBooks);
+  }, []);
 
   // TODO: make hardcoded values dynamic based on data or get them via an API call
   return (
