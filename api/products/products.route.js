@@ -4,6 +4,7 @@ import {
   getProductById,
   getProductCategories,
   getProductsByCategory,
+  getFeaturedProducts,
 } from "./products.controller.js";
 
 export const productRouter = express.Router();
@@ -13,6 +14,7 @@ productRouter.use(express.json());
 
 // route handlers
 productRouter.get("/products", getProducts);
+productRouter.get("/products/featured", getFeaturedProducts);
 
 productRouter.get("/products/categories", getProductCategories);
 productRouter.get("/products/categories/:category", getProductsByCategory);

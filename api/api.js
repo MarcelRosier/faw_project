@@ -1,16 +1,19 @@
 import express from "express";
-import bodyParser from 'body-parser';
+import bodyParser from "body-parser";
+import cors from "cors";
+
 import { productRouter } from "./products/products.route.js";
-import { cartRouter } from "./cart/cart.route.js"
+import { cartRouter } from "./cart/cart.route.js";
 
 // import { customerRouter } from "./customers/customer.route.js";
 import { userRouter } from "./users/users.route.js";
 
 const app = express();
-const PORT = 3000;
+const PORT = 4040;
 
 // This is a built-in middleware function in Express. It parses incoming requests with JSON payloads.
 app.use(express.json());
+app.use(cors());
 
 app.use(productRouter);
 app.use(bodyParser.json());

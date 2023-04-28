@@ -1,30 +1,30 @@
 
 #### Products ####
-GET http://localhost:3000/products HTTP/1.1
+GET http://localhost:4040/products HTTP/1.1
 ###
 // GET - OK
-GET http://localhost:3000/products/3 HTTP/1.1
+GET http://localhost:4040/products/3 HTTP/1.1
 ###
 // GET for non existend -> 404 
-GET http://localhost:3000/products/123123123 HTTP/1.1
+GET http://localhost:4040/products/123123123 HTTP/1.1
 ###
 // GET categories
-GET http://localhost:3000/products/categories HTTP/1.1
+GET http://localhost:4040/products/categories HTTP/1.1
 ###
 // GET by novel category
-GET http://localhost:3000/products/categories/novel HTTP/1.1
+GET http://localhost:4040/products/categories/novel HTTP/1.1
 ###
 // GET by science category
-GET http://localhost:3000/products/categories/science HTTP/1.1
+GET http://localhost:4040/products/categories/science HTTP/1.1
 ###
 // GET by nonexisting category
-GET http://localhost:3000/products/categories/nonexisting HTTP/1.1
+GET http://localhost:4040/products/categories/nonexisting HTTP/1.1
 ###
 
 #### Cart ####
 
 //POST add {productId} and {userId} to {cartId}
-POST http://localhost:3000/carts HTTP/1.1
+POST http://localhost:4040/carts HTTP/1.1
 content-type: application/json
 
 {
@@ -36,7 +36,7 @@ content-type: application/json
 ###
 
 //DELETE {productId} for {userID} in {cartId}
-DELETE http://localhost:3000/carts/1 HTTP/1.1
+DELETE http://localhost:4040/carts/1 HTTP/1.1
 content-type: application/json
 
 {
@@ -46,7 +46,7 @@ content-type: application/json
 ###
 
 //DELETE for wrong user id => error message
-DELETE http://localhost:3000/carts/1 HTTP/1.1
+DELETE http://localhost:4040/carts/1 HTTP/1.1
 content-type: application/json
 
 {
@@ -57,35 +57,35 @@ content-type: application/json
 ###
 
 //GET cart by {cartId}
-GET http://localhost:3000/carts/1 HTTP/1.1
+GET http://localhost:4040/carts/1 HTTP/1.1
 
 ###
 
 
 // GET ALL USERS DETAILS
-GET http://localhost:3000/users HTTP/1.1
+GET http://localhost:4040/users HTTP/1.1
 ###
 
 //GET SPECIFIC USERID
 // create customer
-POST http://localhost:3000/users HTTP/1.1
+POST http://localhost:4040/users HTTP/1.1
 content-type: application/json
 
 {"id":4, "email": "AnaPeterson@gmail.com","firstName": "Ana Peterson","lastName": "Ana Peterson", "password":"ana@112"}
 ###
 
 // get user by id
-GET http://localhost:3000/users/4 HTTP/1.1
+GET http://localhost:4040/users/4 HTTP/1.1
 ###
 
 // update user
-PUT  http://localhost:3000/users/4 HTTP/1.1
+PUT  http://localhost:4040/users/4 HTTP/1.1
 content-type: application/json
 
 {"id":5, "email": "baba123@gmail.com", "firstName": "babavaraprasadreddy","lastName": "pingili", "password":"baba@199797"}
 ###
 
 // delete user
-DELETE  http://localhost:3000/users/5 HTTP/1.1
+DELETE  http://localhost:4040/users/5 HTTP/1.1
 
 ###

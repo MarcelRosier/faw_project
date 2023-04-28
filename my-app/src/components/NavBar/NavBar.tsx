@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { CurrentUserContext } from "../../App";
+import { NavLink } from "react-router-dom";
 
 export const NavBar = () => {
   const { user, setUser } = useContext(CurrentUserContext);
   return (
     <header>
       <nav className="navbar navbar-light">
-        <a className="navbar-brand" href="/">
+        <NavLink className="navbar-brand" to="/">
           <img
             src="/images/logo.png"
             width="30"
@@ -15,45 +16,46 @@ export const NavBar = () => {
             alt=""
           />
           Chapter One
-        </a>
-        <a className="navbar navbar-dark ml-auto" href="/shop">
+        </NavLink>
+        <NavLink className="navbar navbar-dark ml-auto" to="/shop">
           Shop
-        </a>
+        </NavLink>
         {user.id == -1 ? (
           <>
-            <a
+            <NavLink
               className="navbar navbar-dark mr-1"
               style={{ textAlign: "right" }}
-              href="/login"
+              to="/login"
               id="login"
             >
               Login
-            </a>
-            <a
+            </NavLink>
+            <NavLink
               className="navbar navbar-dark mr-1"
-              href="/register"
+              to="/register"
               id="register"
             >
               Register
-            </a>
+            </NavLink>
           </>
         ) : (
-          <a href="">Logout</a>
+          <NavLink to="">Logout</NavLink>
         )}
-        <a
+        <NavLink
           id="navbar-msg"
           className="navbar nav-item navbar-text"
           style={{ textAlign: "right" }}
+          to=""
         >
           {user.id == -1 ? "Welcome!" : `Welcome ${user.firstName}`}
-        </a>
-        <a href="/carts/1">
+        </NavLink>
+        <NavLink to="/carts/1">
           <img
             src="/images/shopping-cart.png"
             width="30"
             alt="No image to shopping cart"
           />
-        </a>
+        </NavLink>
       </nav>
     </header>
   );

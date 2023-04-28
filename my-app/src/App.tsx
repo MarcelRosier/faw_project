@@ -8,7 +8,7 @@ import { ProductDetails } from "./components/ProductDetails/ProductDetails";
 import { Register } from "./components/Register/Register";
 import { Login } from "./components/Login/Login";
 import { User, UserContext } from "./models/user.models";
-// import { ReactDOM } from "react";
+
 const initialUserState: User = {
   id: -1,
   firstName: "-",
