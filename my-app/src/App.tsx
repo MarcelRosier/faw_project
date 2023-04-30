@@ -10,7 +10,7 @@ import { Login } from "./components/Login/Login";
 import { User, UserContext } from "./models/user.models";
 
 const initialUserState: User = {
-  id: -1,
+  id: 1,
   firstName: "-",
   lastName: "-",
   email: "-",
