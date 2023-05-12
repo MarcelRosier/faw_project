@@ -1,8 +1,13 @@
 import React, { useContext } from "react";
 import { CurrentUserContext } from "../../App";
 import { NavLink } from "react-router-dom";
+import { INITIAL_USER_STATE } from "../../constants";
 
 export const NavBar = () => {
+  const logout = () => {
+    sessionStorage.removeItem("userId");
+    setUser(INITIAL_USER_STATE);
+  };
   const { user, setUser } = useContext(CurrentUserContext);
   return (
     <header>
@@ -39,7 +44,9 @@ export const NavBar = () => {
             </NavLink>
           </>
         ) : (
-          <NavLink to="">Logout</NavLink>
+          <NavLink to="" onClick={logout}>
+            Logout
+          </NavLink>
         )}
         <NavLink
           id="navbar-msg"

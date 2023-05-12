@@ -91,6 +91,8 @@ export const Login = () => {
     }
     // update userContext
     setUser(user);
+    // store userId in sessionStorage
+    sessionStorage.setItem("userId", user.id);
     navigate("/shop");
     message.success(`Welcome back ${user.firstName}`, 4000);
   };
@@ -147,7 +149,7 @@ export const Login = () => {
 
           <div className="text-center">
             <p>
-              Not a member? <a href="/src/register.html">Register</a>
+              Not a member? <NavLink to="/register">Register</NavLink>
             </p>
           </div>
         </form>
