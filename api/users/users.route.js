@@ -5,6 +5,7 @@ import {
   insertUserDetails,
   updateUserInfo,
   deleteUser,
+  login,
 } from "./users.controller.js";
 
 export const userRouter = express.Router();
@@ -15,6 +16,7 @@ userRouter.use(express.json());
 //define the routes
 
 //route to get all the users information
+userRouter.post("/login", login);
 userRouter.get("/users", getAllUsers);
 // route to get specific user information with ID
 userRouter.get("/users/:id", getUserInfo);

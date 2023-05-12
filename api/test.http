@@ -71,9 +71,15 @@ GET http://localhost:4040/users HTTP/1.1
 POST http://localhost:4040/users HTTP/1.1
 content-type: application/json
 
-{"id":4, "email": "AnaPeterson@gmail.com","firstName": "Ana Peterson","lastName": "Ana Peterson", "password":"ana@112"}
+{"id":2, "email": "AnaPeterson@gmail.com","firstName": "Ana Peterson","lastName": "Ana Peterson", "password":"ana@112"}
 ###
 
+// test user login
+POST http://localhost:4040/login HTTP/1.1
+content-type: application/json
+
+{"email": "AnaPeterson@gmail.com","password":"ana@112"}
+###
 // get user by id
 GET http://localhost:4040/users/4 HTTP/1.1
 ###

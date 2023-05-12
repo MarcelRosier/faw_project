@@ -27,13 +27,29 @@ function findCustomer(userArray, Id) {
   return userArray.findIndex((currCustomer) => currCustomer.id === Id);
 }
 
+function findUserByEmail(userArray, email) {
+  return userArray.findIndex((currCustomer) => currCustomer.email === email);
+}
+
 // Post operation to save user details into file
-export async function add(newuser) {
+export async function add(newUser) {
   let userArray = await getAll();
-  if (findCustomer(userArray, newuser.id) !== -1)
-    throw new Error(`user with Id:${newuser.id} already exists`);
-  userArray.push(newuser);
+  let userIndex = findCustomer(userArray, newUser.id);
+  if (userIndex !== -1)
+    throw new Error(`user with Id:${newUser.id} already exists`);
+  if (findUserByEmail(userArray, newUser.email) !== -1)
+    throw new Error(`user with Email:${newUser.email} already exists`);
+
+  userArray.push(newUser);
   await save(userArray);
+}
+
+export async function userExists(email, password) {
+  let users = await getAll();
+  let matchingUsers = users.filter(
+    (user) => user.email === email && user.password === password
+  );
+  return matchingUsers.length === 1 ? matchingUsers[0] : undefined;
 }
 
 //get operation for fetching specific userdetails
