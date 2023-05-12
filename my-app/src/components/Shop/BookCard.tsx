@@ -32,7 +32,7 @@ async function addToBasket(book: Book, user: User) {
 }
 export const BookCard = (props: { book: Book }) => {
   const { user, setUser } = useContext(CurrentUserContext);
-  const handleAdd = (event: MouseEvent) => {
+  const handleAdd = (event: React.MouseEvent<HTMLButtonElement>) => {
     addToBasket(props.book, user);
   };
   return (
