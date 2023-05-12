@@ -1,3 +1,4 @@
+import { stat } from "fs";
 import React from "react";
 import { message } from "react-message-popup";
 import validator from "validator";
@@ -50,7 +51,10 @@ export const Login = () => {
     password: "",
   });
 
-  const [errors, setErrors] = React.useState<LoginFormErrors>({});
+  const [errors, setErrors] = React.useState<LoginFormErrors>({
+    email: "",
+    password: "",
+  });
   const validateEmail = (email: string) => {
     return validator.isEmail(email) ? undefined : "Invalid email";
   };
@@ -72,12 +76,24 @@ export const Login = () => {
     }));
   };
   const handleLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
-    // event.preventDefault();
-    if (errors.email || errors.password) {
+    // validate email and password
+    if (errors.email || errors.password || !state.email || !state.password) {
       event.preventDefault();
-      message.error("Invalid email or password", 2000);
+      setErrors((prev) => ({
+        ...prev,
+        ...{ email: validateEmail(state.email) },
+      }));
+      setErrors((prev) => ({
+        ...prev,
+        ...{ password: validatePassword(state.password) },
+      }));
+      message.error(`Please enter a valid email and password!`, 2000);
       return;
     }
+
+    // check if user with email password combination exists
+
+    //TODO
     message.info("Login successful!", 2000);
   };
 
@@ -96,13 +112,11 @@ export const Login = () => {
             <input
               type="email"
               id="email_input"
-              className="form-control"
+              className={`form-control ${errors.email ? "is-invalid" : ""}`}
               onChange={handleEmail}
               required
             />
-            <div className="invalid-feedback">
-              Incorrect password or unkown email
-            </div>
+            <div className="invalid-feedback">Invalid email</div>
             <label className="form-label" htmlFor="email_label">
               Email address
             </label>
@@ -112,12 +126,12 @@ export const Login = () => {
             <input
               type="password"
               id="password_input"
-              className="form-control"
+              className={`form-control ${errors.password ? "is-invalid" : ""}`}
               onChange={handlePassword}
               required
             />
             <div className="invalid-feedback">
-              Incorrect password or unkown email
+              Password field can not be empty!
             </div>
             <label className="form-label" htmlFor="password_label">
               Password
