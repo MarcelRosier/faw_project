@@ -1,40 +1,9 @@
-import { stat } from "fs";
-import React from "react";
+import React, { useContext } from "react";
 import { message } from "react-message-popup";
 import validator from "validator";
-
-// function login(event:) {
-//   let login_form = document.getElementById("login_form");
-//   if (!login_form.checkValidity()) {
-//     return;
-//   }
-
-// // get values
-// let email_element = document.getElementById("email_input");
-// let pw_element = document.getElementById("password_input");
-// let error_element = document.getElementById("login_error_p");
-
-// // check if access data is valid
-// let user_db = getUsers();
-// let user = user_db.get(email_element.value);
-
-// if (user === undefined) {
-//   event.preventDefault();
-//   email_element.setAttribute("class", "form-control is-invalid");
-//   pw_element.setAttribute("class", "form-control is-invalid");
-//   return;
-// }
-// // check pw
-// if (user.password !== pw_element.value) {
-//   event.preventDefault();
-//   email_element.setAttribute("class", "form-control is-invalid");
-//   pw_element.setAttribute("class", "form-control is-invalid");
-//   return;
-// }
-
-// // set current user as active
-// setActiveUser(user);
-// }
+import { API_HOST } from "../../constants";
+import { CurrentUserContext } from "../../App";
+import { NavLink, useNavigate } from "react-router-dom";
 
 interface LoginFormData {
   email: string;
@@ -45,7 +14,28 @@ interface LoginFormErrors {
   password?: string;
 }
 
+async function login(userData: LoginFormData) {
+  try {
+    const response = await fetch(`${API_HOST}/login`, {
+      // learn more about this API here: https://graphql-pokemon2.vercel.app/
+      method: "POST",
+      headers: {
+        "content-type": "application/json;charset=UTF-8",
+      },
+      body: JSON.stringify({
+        email: userData.email,
+        password: userData.password,
+      }),
+    });
+    return response.ok ? response.json() : undefined;
+  } catch (error) {
+    message.error(`Error while attempting user login: ${error}`, 2500);
+  }
+}
+
 export const Login = () => {
+  const navigate = useNavigate();
+  const { user, setUser } = useContext(CurrentUserContext);
   const [state, setState] = React.useState<LoginFormData>({
     email: "",
     password: "",
@@ -75,10 +65,12 @@ export const Login = () => {
       ...{ password: validatePassword(event.target.value) },
     }));
   };
-  const handleLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleLogin = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
     // validate email and password
     if (errors.email || errors.password || !state.email || !state.password) {
-      event.preventDefault();
+      // event.preventDefault();
       setErrors((prev) => ({
         ...prev,
         ...{ email: validateEmail(state.email) },
@@ -90,11 +82,17 @@ export const Login = () => {
       message.error(`Please enter a valid email and password!`, 2000);
       return;
     }
-
     // check if user with email password combination exists
-
-    //TODO
-    message.info("Login successful!", 2000);
+    let user = await login(state);
+    if (!user) {
+      // event.preventDefault();
+      message.error(`Invalid email or password!`, 2000);
+      return;
+    }
+    // update userContext
+    setUser(user);
+    navigate("/shop");
+    message.success(`Welcome back ${user.firstName}`, 4000);
   };
 
   return (
