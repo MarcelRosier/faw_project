@@ -4,6 +4,9 @@ import { CartItemComponent } from "./CartItem";
 import { User } from "../../models/user.models";
 import { CurrentUserContext } from "../../App";
 import { Carts, CartItem } from "../../models/cart.models";
+import { NavBar } from "../NavBar/NavBar";
+import  CartHeader from "./CartHeader";
+
 
 export const Cart = () => {
   const { user } = useContext(CurrentUserContext);
@@ -27,12 +30,49 @@ export const Cart = () => {
     return <div>Loading cart...</div>;
   }
 
+  const handleQuantityChange = (productId: number, newQuantity: number) => {
+    setCart((prevCart) => {
+      if (!prevCart) return null;
+
+      const updatedItems = prevCart.items.map((item) => {
+        if (item.productId === productId) {
+          return { ...item, quantity: newQuantity };
+        }
+        return item;
+      });
+
+      return { ...prevCart, items: updatedItems };
+    });
+  };
+
+  const handleRemoveBook = (productId: number) => {
+    setCart((prevCart) => {
+      if (!prevCart) return null;
+
+      const updatedItems = prevCart.items.filter(
+        (item) => item.productId !== productId
+      );
+
+      return { ...prevCart, items: updatedItems };
+    });
+  };
+
   return (
     <div>
+      <NavBar />
       <h1>Cart</h1>
-      {cart && cart.items.map((item) => (
-        <CartItemComponent key={item.productId} cartItem={item} />
-      ))}
+      <hr></hr>
+        <div className="container">
+        <CartHeader />
+          {cart && cart.items.map((item) => (
+                     <CartItemComponent
+                     key={item.productId}
+                     cartItem={item}
+                     onQuantityChange={handleQuantityChange}
+                     onRemoveBook={handleRemoveBook}
+                   />
+          ))}
+        </div>
       <a href="/">Back to index</a>
     </div>
   );
