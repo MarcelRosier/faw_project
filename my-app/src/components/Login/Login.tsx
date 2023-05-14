@@ -17,7 +17,6 @@ interface LoginFormErrors {
 async function login(userData: LoginFormData) {
   try {
     const response = await fetch(`${API_HOST}/login`, {
-      // learn more about this API here: https://graphql-pokemon2.vercel.app/
       method: "POST",
       headers: {
         "content-type": "application/json;charset=UTF-8",
