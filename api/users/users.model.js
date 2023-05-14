@@ -42,6 +42,7 @@ export async function add(newUser) {
 
   userArray.push(newUser);
   await save(userArray);
+  return newUser;
 }
 
 export async function userExists(email, password) {

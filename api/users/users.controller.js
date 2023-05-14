@@ -28,8 +28,8 @@ export async function login(req, res) {
 export async function insertUserDetails(req, res) {
   try {
     let addnewuser = req.body;
-    await userModel.add(addnewuser);
-    res.sendStatus(201);
+    let user = await userModel.add(addnewuser);
+    res.json(user);
   } catch (error) {
     res.status(400).send(error.message);
   }
