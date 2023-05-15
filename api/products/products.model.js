@@ -1,8 +1,12 @@
 import * as fs from "fs/promises";
 const PRODUCT_DB = "api/books.json";
 
-export async function getProducts() {
-  return JSON.parse(await fs.readFile(PRODUCT_DB));
+export async function getProducts(ids) {
+  let data = JSON.parse(await fs.readFile(PRODUCT_DB));
+  if (!ids) {
+    return data;
+  }
+  return data.filter((book) => ids.indexOf(book.id) !== -1);
 }
 
 export async function getFeaturedProducts() {
