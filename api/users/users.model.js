@@ -34,12 +34,14 @@ function findUserByEmail(userArray, email) {
 // Post operation to save user details into file
 export async function add(newUser) {
   let userArray = await getAll();
-  let userIndex = findCustomer(userArray, newUser.id);
-  if (userIndex !== -1)
-    throw new Error(`user with Id:${newUser.id} already exists`);
   if (findUserByEmail(userArray, newUser.email) !== -1)
     throw new Error(`user with Email:${newUser.email} already exists`);
+  let maxId = userArray.reduce(
+    (max, user) => (user.id > max ? user.id : max),
+    0
+  ); // find max id
 
+  newUser.id = maxId + 1; // assign new id
   userArray.push(newUser);
   await save(userArray);
   return newUser;
