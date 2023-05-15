@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CurrentUserContext } from "../../App";
+import { ShopContext } from "../../App";
 import { NavLink } from "react-router-dom";
 import { INITIAL_USER_STATE } from "../../constants";
 
@@ -8,7 +8,7 @@ export const NavBar = () => {
     sessionStorage.removeItem("userId");
     setUser(INITIAL_USER_STATE);
   };
-  const { user, setUser } = useContext(CurrentUserContext);
+  const { user, setUser, cart, setCart } = useContext(ShopContext);
   return (
     <header>
       <nav className="navbar navbar-light">
@@ -17,7 +17,7 @@ export const NavBar = () => {
             src="/images/logo.png"
             width="30"
             height="30"
-            className="d-inline-block align-top"
+            className="d-inline-block align-top mr-1"
             alt=""
           />
           Chapter One
