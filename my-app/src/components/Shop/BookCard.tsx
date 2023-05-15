@@ -1,14 +1,12 @@
 import React, { MouseEvent, useContext } from "react";
 import { Book } from "../../models/book.models";
 import { message } from "react-message-popup";
-import { NavLink } from "react-router-dom";
-import { User } from "../../models/user.models";
-import { CurrentUserContext } from "../../App";
+import { NavLink, useRevalidator } from "react-router-dom";
+import { User, Cart, CartItem } from "../../models/user.models";
+import { ShopContext } from "../../App";
 import { API_HOST } from "../../constants";
 
 async function addToBasket(book: Book, user: User) {
-  //TODO Call api
-  // fetch ...
   const params = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -18,6 +16,7 @@ async function addToBasket(book: Book, user: User) {
       cartId: user.id, // TODO: change this to proper id later
     }),
   };
+
   try {
     let response = await fetch(`${API_HOST}/carts`, params);
     // alert user that operation was sucessful
@@ -31,10 +30,40 @@ async function addToBasket(book: Book, user: User) {
   }
 }
 export const BookCard = (props: { book: Book }) => {
-  const { user, setUser } = useContext(CurrentUserContext);
+  const { user, setUser, cart, setCart } = useContext(ShopContext);
   const handleAdd = (event: React.MouseEvent<HTMLButtonElement>) => {
-    addToBasket(props.book, user);
+    if (user.id === -1) {
+      // only add to local context
+      setCart((prev) => {
+        let index = cart.items.findIndex(
+          (item) => item.productId === props.book.id
+        );
+        if (index === -1) {
+          return {
+            ...prev,
+            items: [
+              ...prev.items,
+              {
+                productId: props.book.id,
+                quantity: 1,
+              },
+            ],
+          };
+        } else {
+          let newItems = prev.items.map((x) => Object.assign({}, x));
+          newItems[index].quantity += 1;
+          return {
+            ...prev,
+            items: newItems,
+          };
+        }
+      });
+      message.success(`Added '${props.book.title}' to cart!`, 2000);
+    } else {
+      addToBasket(props.book, user);
+    }
   };
+
   return (
     <div className="col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex align-items-stretch justify-content-center">
       <div className="card">

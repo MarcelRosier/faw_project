@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { message } from "react-message-popup";
 import validator from "validator";
 import { API_HOST } from "../../constants";
-import { CurrentUserContext } from "../../App";
+import { ShopContext } from "../../App";
 import { NavLink, useNavigate } from "react-router-dom";
 
 interface LoginFormData {
@@ -34,7 +34,7 @@ async function login(userData: LoginFormData) {
 
 export const Login = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(CurrentUserContext);
+  const { user, setUser, cart, setCart } = useContext(ShopContext);
   const [state, setState] = React.useState<LoginFormData>({
     email: "",
     password: "",

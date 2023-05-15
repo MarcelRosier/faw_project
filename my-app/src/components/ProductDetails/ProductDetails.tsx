@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { NavBar } from "../NavBar/NavBar";
 import { Nav, NavDropdown } from "react-bootstrap";
 import { API_HOST } from "../../constants";
 import { Book } from "../../models/book.models";
+import { User, Cart } from "../../models/user.models";
+import { ShopContext } from "../../App";
 import { message } from "react-message-popup";
 import { useParams } from "react-router-dom";
 
@@ -17,16 +19,68 @@ async function fetchBook(id: string, setBook: (value: Book) => void) {
     message.error(`Error while featching featured books: ${error}`, 2500);
   }
 }
+async function addToBasket(book: Book, user: User) {
+  const params = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      userId: user.id,
+      productId: book.id,
+      cartId: user.id, // TODO: change this to proper id later
+    }),
+  };
 
+  try {
+    let response = await fetch(`${API_HOST}/carts`, params);
+    // alert user that operation was sucessful
+    if (response.ok) {
+      message.success(`Added '${book.title}' to cart!`, 2000);
+    }
+  } catch (error) {
+    message.error(
+      "Whoopsie! An error occured while adding your item to the basket"
+    );
+  }
+}
 export const ProductDetails = () => {
+  const { user, setUser, cart, setCart } = useContext(ShopContext);
   const [book, setBook] = useState<Book>();
   const { id } = useParams<{ id: string }>();
   useEffect(() => {
-    fetchBook(id ? id : "1", setBook);
+    if (!id) return;
+    fetchBook(id, setBook);
   }, []);
 
   const handleAdd = (event: React.MouseEvent<HTMLButtonElement>) => {
-    // addToBasket(book, user);
+    if (!user || !book) return;
+    if (user.id === -1) {
+      // only add to local context
+      setCart((prev) => {
+        let index = cart.items.findIndex((item) => item.productId === book.id);
+        if (index === -1) {
+          return {
+            ...prev,
+            items: [
+              ...prev.items,
+              {
+                productId: book.id,
+                quantity: 1,
+              },
+            ],
+          };
+        } else {
+          let newItems = prev.items.map((x) => Object.assign({}, x));
+          newItems[index].quantity += 1;
+          return {
+            ...prev,
+            items: newItems,
+          };
+        }
+      });
+      message.success(`Added '${book.title}' to cart!`, 2000);
+    } else {
+      addToBasket(book, user);
+    }
   };
 
   if (!book) {

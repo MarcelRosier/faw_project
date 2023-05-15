@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { message } from "react-message-popup";
 import validator from "validator";
 import { API_HOST } from "../../constants";
-import { CurrentUserContext } from "../../App";
+import { ShopContext } from "../../App";
 import { NavLink, useNavigate } from "react-router-dom";
 
 interface RegisterFormData {
@@ -28,7 +28,7 @@ async function register(userData: RegisterFormData) {
         "content-type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        id: 404,
+        id: 42,
         email: userData.email,
         firstName: userData.firstName,
         lastName: userData.lastName,
@@ -43,7 +43,7 @@ async function register(userData: RegisterFormData) {
 
 export const Register = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(CurrentUserContext);
+  const { user, setUser, cart, setCart } = useContext(ShopContext);
   const [state, setState] = React.useState<RegisterFormData>({
     firstName: "",
     lastName: "",
