@@ -29,17 +29,17 @@ export function findProductIndex(cart, productId) {
   return cart.items.findIndex((item) => item.productId === productId);
 }
 
-export async function addProductToCart(carts, cartId, userId, product) {
-  let cart = carts[cartId];
-
+export async function addProductToCart(carts, userId, product) {
+  let cart = carts.find((cart) => cart.userId === userId);
+  console.log(cart);
   if (!cart) {
     cart = {
       userId,
       items: [],
     };
-    carts[cartId] = cart;
+    carts.push(cart);
   }
-
+  console.log(cart);
   if (cart.userId !== userId) {
     throw new Error("Cart not found for user");
   }
@@ -60,7 +60,7 @@ export async function addProductToCart(carts, cartId, userId, product) {
 }
 
 export function removeProductFromCart(carts, cartId, userId, productId) {
-  const cart = carts[cartId];
+  const cart = carts.find((cart) => cart.id === cartId);
 
   if (!cart || cart.userId !== userId) {
     throw new Error("Cart does not belong to given user");
@@ -76,7 +76,16 @@ export function removeProductFromCart(carts, cartId, userId, productId) {
 }
 
 export function getCartById(carts, cartId) {
-  const cart = carts[cartId];
+  const cart = carts.find((cart) => cart.id === cartId);
+  if (!cart) {
+    throw new Error("Cart not found for this user");
+  }
+  return cart;
+}
+
+export function getCartByUserId(carts, userId) {
+  let cart = carts.find((cart) => cart.userId === userId);
+
   if (!cart) {
     throw new Error("Cart not found for this user");
   }

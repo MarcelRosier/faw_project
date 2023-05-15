@@ -4,12 +4,13 @@ import {
   addProductToCart,
   removeProductFromCart,
   getCartById,
+  getCartByUserId,
 } from "./cart.model.js";
 import { fetchProductById } from "../products/products.controller.js";
 
 /* Add product to cart*/
 export async function addProduct(req, res) {
-  const { cartId, userId, productId } = req.body;
+  const { userId, productId } = req.body;
 
   try {
     const product = await fetchProductById(productId);
@@ -20,12 +21,7 @@ export async function addProduct(req, res) {
       }
 
       try {
-        const updatedCarts = await addProductToCart(
-          carts,
-          cartId,
-          userId,
-          product
-        );
+        const updatedCarts = await addProductToCart(carts, userId, product);
         write(updatedCarts, (err) => {
           if (err) {
             return res.status(500).send("Error adding to cart");
@@ -83,6 +79,25 @@ export function getCart(req, res) {
 
     try {
       const cart = getCartById(carts, cartId);
+      res.status(200).json(cart);
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  });
+}
+/* Get cart */
+export function getCarts(req, res) {
+  let userId = parseInt(req.query.userId);
+  if (!userId) {
+    return res.status(400).send("userId is required");
+  }
+  read((err, carts) => {
+    if (err) {
+      return res.status(400).send("Error reading cart");
+    }
+
+    try {
+      const cart = getCartByUserId(carts, userId);
       res.status(200).json(cart);
     } catch (error) {
       res.status(400).send(error.message);
