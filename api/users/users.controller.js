@@ -9,13 +9,27 @@ export async function getAllUsers(req, res) {
     res.status(500).send(error.message);
   }
 }
+// APi to login a user
+export async function login(req, res) {
+  try {
+    let user = req.body;
+    let existingUser = await userModel.userExists(user.email, user.password);
+    if (existingUser) {
+      res.json(existingUser);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+}
 
 // Api to insert the users in json database
 export async function insertUserDetails(req, res) {
   try {
     let addnewuser = req.body;
-    await userModel.add(addnewuser);
-    res.sendStatus(201);
+    let user = await userModel.add(addnewuser);
+    res.json(user);
   } catch (error) {
     res.status(400).send(error.message);
   }

@@ -25,7 +25,7 @@ async function filterBooks(
     });
     setBooks(filteredBooks);
   } catch (error) {
-    message.error(`Error while featching book data: ${error}`, 2500);
+    message.error(`Error while fetching book data: ${error}`, 2500);
   }
 }
 
