@@ -28,7 +28,6 @@ async function register(userData: RegisterFormData) {
         "content-type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        id: 42,
         email: userData.email,
         firstName: userData.firstName,
         lastName: userData.lastName,
