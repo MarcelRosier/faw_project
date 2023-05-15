@@ -13,7 +13,6 @@ async function addToBasket(book: Book, user: User) {
     body: JSON.stringify({
       userId: user.id,
       productId: book.id,
-      cartId: user.id, // TODO: change this to proper id later
     }),
   };
 
