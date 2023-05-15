@@ -88,7 +88,10 @@ export const Register = () => {
     setState((prev) => ({ ...prev, ...{ password: event.target.value } }));
     setErrors((prev) => ({
       ...prev,
-      ...{ password: validatePassword(event.target.value) },
+      ...{
+        password: validatePassword(event.target.value),
+        passwordConfirmation: validatePassword(event.target.value),
+      },
     }));
   };
 
@@ -101,7 +104,10 @@ export const Register = () => {
     }));
     setErrors((prev) => ({
       ...prev,
-      ...{ passwordConfirmation: validatePassword(event.target.value) },
+      ...{
+        password: validatePassword(event.target.value),
+        passwordConfirmation: validatePassword(event.target.value),
+      },
     }));
   };
   const anyEmptyFields = () => {
