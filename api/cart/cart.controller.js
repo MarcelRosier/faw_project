@@ -5,6 +5,7 @@ import {
   removeProductFromCart,
   getCartById,
   getCartByUserId,
+  updateCartByUserId,
 } from "./cart.model.js";
 import { fetchProductById } from "../products/products.controller.js";
 
@@ -99,6 +100,25 @@ export function getCarts(req, res) {
     try {
       const cart = getCartByUserId(carts, userId);
       res.status(200).json(cart);
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  });
+}
+
+export function updateCarts(req, res) {
+  const { userId, cartItems } = req.body;
+  if (!userId) {
+    return res.status(400).send("userId is required");
+  }
+  write((err, carts) => {
+    if (err) {
+      return res.status(400).send("Error reading cart");
+    }
+
+    try {
+      const updatedCart = updateCartByUserId(carts, userId, cartItems);
+      res.status(200).json(updatedCart);
     } catch (error) {
       res.status(400).send(error.message);
     }

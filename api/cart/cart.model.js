@@ -92,4 +92,14 @@ export function getCartByUserId(carts, userId) {
   return cart;
 }
 
+export function updateCartByUserId(carts, userId, cartItems) {
+  let cart = carts.find((cart) => cart.userId === userId);
+
+  if (!cart) {
+    throw new Error("Cart not found for this user");
+  }
+  cart.items = cartItems;
+  return cart;
+}
+
 export default { read, write };

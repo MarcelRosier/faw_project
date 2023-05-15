@@ -1,9 +1,1 @@
-[
-  {
-    "userId": 42,
-    "items": [
-      { "productId": 1, "quantity": 2 },
-      { "productId": 2, "quantity": 1 }
-    ]
-  }
-]
+[{"userId":42,"items":[{"productId":1,"quantity":2},{"productId":2,"quantity":1}]},{"userId":2,"items":[{"productId":1,"quantity":1},{"productId":5,"quantity":4},{"productId":2,"quantity":1},{"productId":4,"quantity":1}]}]
