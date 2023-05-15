@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../../App";
 import { NavLink } from "react-router-dom";
-import { INITIAL_USER_STATE } from "../../constants";
+import { INITIAL_CART_STATE, INITIAL_USER_STATE } from "../../constants";
 
 export const NavBar = () => {
+  const { user, setUser, cart, setCart } = useContext(ShopContext);
   const logout = () => {
     sessionStorage.removeItem("userId");
     setUser(INITIAL_USER_STATE);
+    setCart(INITIAL_CART_STATE);
   };
-  const { user, setUser, cart, setCart } = useContext(ShopContext);
   return (
     <header>
       <nav className="navbar navbar-light">
