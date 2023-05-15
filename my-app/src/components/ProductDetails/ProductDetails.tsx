@@ -141,7 +141,11 @@ export const ProductDetails = () => {
                 </section>
               </article>
               <p id="price" className="mb-5"></p>
-              <button id="btn-add" className="btn btn-primary">
+              <button
+                id="btn-add"
+                className="btn btn-primary"
+                onClick={handleAdd}
+              >
                 Add to cart
               </button>
             </div>
