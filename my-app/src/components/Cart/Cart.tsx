@@ -8,6 +8,7 @@ import { API_HOST } from "../../constants";
 import { message } from "react-message-popup";
 import { CartRow } from "./CartRow";
 import { User } from "../../models/user.models";
+import { updateCart } from "./CartRow";
 
 async function fetchBooks(cart: CartType, setBooks: (books: Book[]) => void) {
   try {
@@ -58,11 +59,25 @@ export const Cart = () => {
     return books.find((book) => book.id === id);
   };
   const getTotalPrice = () => {
-    return cart.items.reduce((acc, item) => {
-      let book = getBookById(item.productId);
-      if (!book) return acc;
-      return acc + +book.price * item.quantity;
-    }, 0);
+    return cart.items
+      .reduce((acc, item) => {
+        let book = getBookById(item.productId);
+        if (!book) return acc;
+        return acc + +book.price * item.quantity;
+      }, 0)
+      .toFixed(2);
+  };
+  const handleCheckout = (event: React.MouseEvent<HTMLButtonElement>) => {
+    // clear cart
+    setCart((prev) => {
+      let newCart = { userId: prev.userId, items: [] };
+      updateCart(user, newCart);
+      return newCart;
+    });
+    message.success(
+      "Your order is on the way.\n Thanks for shopping with us!",
+      3000
+    );
   };
   return (
     <>
@@ -101,7 +116,12 @@ export const Cart = () => {
             <div className="row grand-total-price">
               <h5>Grand total</h5>
               <p id="grand-total">{`${getTotalPrice()}$`}</p>
-              <button className="btn btn-primary checkout-btn">Checkout</button>
+              <button
+                className="btn btn-primary checkout-btn"
+                onClick={handleCheckout}
+              >
+                Checkout
+              </button>
             </div>
           </>
         )}

@@ -75,7 +75,7 @@ img {
   /* margin: auto; */
   float: right;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .grand-total-price h5,
 p,
