@@ -17,6 +17,6 @@ productRouter.get("/products", getProducts);
 productRouter.get("/products/featured", getFeaturedProducts);
 
 productRouter.get("/products/categories", getProductCategories);
-productRouter.get("/products/categories/:category", getProductsByCategory);
+// productRouter.get("/products/categories/:category", getProductsByCategory);
 
 productRouter.get("/products/:id", getProductById);
