@@ -1,5 +1,5 @@
 import * as fs from "fs/promises";
-const USERS_DATA = "api/users/users.json";
+const USERS_DATA = "users/users.json";
 
 // return all users from file
 export async function getAll() {
