@@ -2,11 +2,13 @@ import * as productModel from "./products.model.js";
 
 export async function getProducts(req, res) {
   try {
-    if (!req.query.id) {
-      return res.json(await productModel.getProducts());
-    }
-    let ids = req.query.id.split(",").map((id) => parseInt(id));
-    res.json(await productModel.getProducts(ids));
+    let ids = req.query.id
+      ? req.query.id.split(",").map((id) => parseInt(id))
+      : "";
+    let language = req.query.language || "";
+    let author = req.query.author || "";
+    let genre = req.query.genre || "";
+    res.json(await productModel.getProducts(ids, language, author, genre));
   } catch (error) {
     res.sendStatus(500);
   }
