@@ -154,7 +154,7 @@ export const Register = () => {
     }
     if (!userResponse.ok) {
       // event.preventDefault();
-      message.error(`asd ${userResponse.body}`, 2000);
+      message.error(`Email address is already in use!`, 2000);
       return;
     }
     let user = await userResponse.json();
