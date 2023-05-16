@@ -25,7 +25,6 @@ export async function updateCart(user: User, cart: Cart) {
 }
 
 export const CartRow = (props: {
-  id: number;
   quantity: number;
   book: Book | undefined;
 }) => {
@@ -60,7 +59,7 @@ export const CartRow = (props: {
   };
 
   return props.book ? (
-    <div key={props.id} className="row cart-row">
+    <div className="row cart-row">
       <img className="book-image" src={props.book.imageLink} />
       <div className="book-details">
         <h5>{props.book.title}</h5>

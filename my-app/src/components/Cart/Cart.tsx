@@ -75,8 +75,8 @@ export const Cart = () => {
       return newCart;
     });
     message.success(
-      "Your order is on the way.\n Thanks for shopping with us!",
-      3000
+      "Your order is on the way. Thanks for shopping with us!",
+      6000
     );
   };
   return (
@@ -106,8 +106,7 @@ export const Cart = () => {
             <div id="cart-content">
               {cart.items.map((item, i) => (
                 <CartRow
-                  key={i}
-                  id={i}
+                  key={item.productId}
                   quantity={item.quantity}
                   book={getBookById(item.productId)}
                 />
