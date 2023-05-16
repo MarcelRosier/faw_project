@@ -111,14 +111,19 @@ export function updateCarts(req, res) {
   if (!userId) {
     return res.status(400).send("userId is required");
   }
-  write((err, carts) => {
+  read((err, carts) => {
     if (err) {
       return res.status(400).send("Error reading cart");
     }
 
     try {
-      const updatedCart = updateCartByUserId(carts, userId, cartItems);
-      res.status(200).json(updatedCart);
+      const updatedCarts = updateCartByUserId(carts, userId, cartItems);
+      write(updatedCarts, (err) => {
+        if (err) {
+          return res.status(500).send("error updating cart");
+        }
+        res.status(200).send("cart updated");
+      });
     } catch (error) {
       res.status(400).send(error.message);
     }

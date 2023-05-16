@@ -31,7 +31,6 @@ export function findProductIndex(cart, productId) {
 
 export async function addProductToCart(carts, userId, product) {
   let cart = carts.find((cart) => cart.userId === userId);
-  console.log(cart);
   if (!cart) {
     cart = {
       userId,
@@ -39,7 +38,6 @@ export async function addProductToCart(carts, userId, product) {
     };
     carts.push(cart);
   }
-  console.log(cart);
   if (cart.userId !== userId) {
     throw new Error("Cart not found for user");
   }
@@ -99,7 +97,7 @@ export function updateCartByUserId(carts, userId, cartItems) {
     throw new Error("Cart not found for this user");
   }
   cart.items = cartItems;
-  return cart;
+  return carts;
 }
 
 export default { read, write };
