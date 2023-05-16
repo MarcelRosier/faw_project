@@ -32,3 +32,8 @@ npm start
 # in /frontend
 npm start
 ```
+
+## Troubleshoot
+
+Tested and working on Node.js **v19.7.0**.  
+In case of dependency issues or related bugs please use the specifie Node version.
