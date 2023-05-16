@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
-import { CurrentUserContext } from "../../App";
+import { ShopContext } from "../../App";
 import { NavLink } from "react-router-dom";
-import { INITIAL_USER_STATE } from "../../constants";
+import { INITIAL_CART_STATE, INITIAL_USER_STATE } from "../../constants";
 
 export const NavBar = () => {
+  const { user, setUser, cart, setCart } = useContext(ShopContext);
   const logout = () => {
     sessionStorage.removeItem("userId");
     setUser(INITIAL_USER_STATE);
+    setCart(INITIAL_CART_STATE);
   };
-  const { user, setUser } = useContext(CurrentUserContext);
   return (
     <header>
       <nav className="navbar navbar-light">
@@ -17,7 +18,7 @@ export const NavBar = () => {
             src="/images/logo.png"
             width="30"
             height="30"
-            className="d-inline-block align-top"
+            className="d-inline-block align-top mr-1"
             alt=""
           />
           Chapter One

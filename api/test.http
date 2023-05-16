@@ -2,6 +2,9 @@
 #### Products ####
 GET http://localhost:4040/products HTTP/1.1
 ###
+
+GET http://localhost:4040/products?id=2,5,7 HTTP/1.1
+###
 // GET - OK
 GET http://localhost:4040/products/3 HTTP/1.1
 ###

@@ -5,12 +5,12 @@ import { ShopFeatured } from "./ShopFeatured";
 import { ShopFilter } from "./ShopFilter";
 import { BookGrid } from "./BookGrid";
 import "./Shop.css";
-import { CurrentUserContext } from "../../App";
+import { ShopContext } from "../../App";
 import { Book } from "../../models/book.models";
 
 export const Shop = () => {
   const [books, setBooks] = useState<Book[]>([]);
-  const { user, setUser } = useContext(CurrentUserContext);
+  const { user, setUser, cart, setCart } = useContext(ShopContext);
   return (
     <div>
       <NavBar />

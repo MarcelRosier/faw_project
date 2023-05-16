@@ -6,9 +6,20 @@ export type User = {
     password: string,
 };
 
-export type UserContext = {    
+export type CartItem = {    
+    productId: number,
+    quantity: number
+};
+
+export type Cart = {    
+    userId: number,
+    items: CartItem[]
+};
+export type ShopContext = {    
     user: User,
-    setUser: (value: User) => void
+    setUser: React.Dispatch<React.SetStateAction<User>>,
+    cart: Cart,
+    setCart: React.Dispatch<React.SetStateAction<Cart>>,
 };
 
 

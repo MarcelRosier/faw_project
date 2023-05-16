@@ -1,0 +1,84 @@
+.title {
+  text-align: left;
+  font-size: 40px;
+}
+
+.cart-row {
+  height: 25vh;
+  min-height: 100px;
+  max-height: 30vh;
+  /* background-color: aqua; */
+  margin: 10px 10px 10px 10px;
+}
+.cart-row-header {
+  min-height: 20px;
+  max-height: 30vh;
+  margin: 0 10px 0 10px;
+}
+
+.book-image {
+  float: left;
+  max-height: 100%;
+  width: 30%;
+  padding: 5px;
+}
+img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+.book-details {
+  margin: auto;
+  float: left;
+  max-height: 100%;
+  width: 20%;
+  padding: 5px;
+}
+
+.book-price {
+  margin: auto;
+  float: left;
+  max-height: 100%;
+  width: 10%;
+  padding: 5px;
+}
+.book-quantity {
+  margin: auto;
+  float: left;
+  max-height: 100%;
+  width: 15%;
+  padding: 5px;
+}
+.book-quantity input {
+  margin: auto;
+  width: 100%;
+}
+.book-removal {
+  margin: auto;
+  width: 15%;
+  padding: 10px;
+}
+.book-removal button {
+  margin: auto;
+}
+.book-total-price {
+  margin: auto;
+  float: left;
+  max-height: 100%;
+  width: 10%;
+  padding: 5px;
+  text-align: right;
+}
+
+.grand-total-price {
+  width: 50%;
+  /* margin: auto; */
+  float: right;
+  display: flex;
+  justify-content: flex-end;
+}
+.grand-total-price h5,
+p,
+button {
+  margin: 10px;
+}

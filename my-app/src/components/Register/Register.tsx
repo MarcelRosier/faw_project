@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { message } from "react-message-popup";
 import validator from "validator";
 import { API_HOST } from "../../constants";
-import { CurrentUserContext } from "../../App";
+import { ShopContext } from "../../App";
 import { NavLink, useNavigate } from "react-router-dom";
 
 interface RegisterFormData {
@@ -28,7 +28,6 @@ async function register(userData: RegisterFormData) {
         "content-type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        id: 404,
         email: userData.email,
         firstName: userData.firstName,
         lastName: userData.lastName,
@@ -43,7 +42,7 @@ async function register(userData: RegisterFormData) {
 
 export const Register = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(CurrentUserContext);
+  const { user, setUser, cart, setCart } = useContext(ShopContext);
   const [state, setState] = React.useState<RegisterFormData>({
     firstName: "",
     lastName: "",
@@ -88,7 +87,10 @@ export const Register = () => {
     setState((prev) => ({ ...prev, ...{ password: event.target.value } }));
     setErrors((prev) => ({
       ...prev,
-      ...{ password: validatePassword(event.target.value) },
+      ...{
+        password: validatePassword(event.target.value),
+        passwordConfirmation: validatePassword(event.target.value),
+      },
     }));
   };
 
@@ -101,7 +103,10 @@ export const Register = () => {
     }));
     setErrors((prev) => ({
       ...prev,
-      ...{ passwordConfirmation: validatePassword(event.target.value) },
+      ...{
+        password: validatePassword(event.target.value),
+        passwordConfirmation: validatePassword(event.target.value),
+      },
     }));
   };
   const anyEmptyFields = () => {

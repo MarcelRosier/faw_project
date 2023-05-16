@@ -2,7 +2,11 @@ import * as productModel from "./products.model.js";
 
 export async function getProducts(req, res) {
   try {
-    res.json(await productModel.getProducts());
+    if (!req.query.id) {
+      return res.json(await productModel.getProducts());
+    }
+    let ids = req.query.id.split(",").map((id) => parseInt(id));
+    res.json(await productModel.getProducts(ids));
   } catch (error) {
     res.sendStatus(500);
   }
