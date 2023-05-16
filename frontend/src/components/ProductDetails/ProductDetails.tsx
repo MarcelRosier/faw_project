@@ -116,23 +116,16 @@ export const ProductDetails = () => {
               >
                 {book.author}
               </h3>
-              <p
-                className="text-left"
-                style={{ fontSize: "18px" }}
+              <h6
+                // className="text-left"
                 id="publishedyear"
               >
                 {book.year}
-              </p>
-              <p style={{ fontSize: "18px" }} id="bookgenre">
-                {book.genre}
-              </p>
-              <p
-                className="mt-1 text-align-right"
-                style={{ fontSize: "18px" }}
-                id="price"
-              >
-                {book.price}
-              </p>
+              </h6>
+              <h6 id="bookgenre">{`${book.genre}`}</h6>
+              <h6 className="mt-1" id="price">
+                {`${book.price}$`}
+              </h6>
               <article>
                 <h5 className="fw-bold">Description</h5>
                 <section id="description" className="mb-5">
