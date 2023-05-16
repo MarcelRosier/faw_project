@@ -1,7 +1,13 @@
-import React, { ChangeEvent, useEffect } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { Book } from "../../models/book.models";
 import { API_HOST } from "../../constants";
 import { message } from "react-message-popup";
+
+type Categories = {
+  genre: string[];
+  language: string[];
+  author: string[];
+};
 
 async function filterBooks(
   language: string,
@@ -10,22 +16,27 @@ async function filterBooks(
   setBooks: (value: Book[]) => void
 ) {
   try {
-    // TODO: maybe move filtering to backend?
-    const response = await fetch(`${API_HOST}/products`);
+    const response = await fetch(
+      `${API_HOST}/products?language=${language}&author=${author}&genre=${genre}`
+    );
     if (!response.ok) {
       throw Error("Error fetching books");
     }
-    let books: Book[] = await response.json();
-    let filteredBooks = books.filter((book: Book) => {
-      return (
-        (language === "" || book.language === language) &&
-        (author === "" || book.author === author) &&
-        (genre === "" || book.genre === genre)
-      );
-    });
-    setBooks(filteredBooks);
+    setBooks(await response.json());
   } catch (error) {
     message.error(`Error while fetching book data: ${error}`, 2500);
+  }
+}
+
+async function fetchCategories(setCategories: (value: Categories) => void) {
+  try {
+    const response = await fetch(`${API_HOST}/products/categories`);
+    if (!response.ok) {
+      throw Error("Error fetching categories");
+    }
+    setCategories(await response.json());
+  } catch (error) {
+    message.error(`Error while fetching category data: ${error}`, 2500);
   }
 }
 
@@ -33,29 +44,31 @@ export const ShopFilter = (props: {
   books: Book[];
   setBooks: (value: Book[]) => void;
 }) => {
-  // TODO: refactor, not clean code
-  const [language, setLanguage] = React.useState("");
+  const [categories, setCategories] = useState<Categories>({
+    language: [],
+    author: [],
+    genre: [],
+  });
+  const [language, setLanguage] = useState("");
   const onLanguageChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     setLanguage(value);
-    filterBooks(value, author, genre, props.setBooks);
   };
-  const [author, setAuthor] = React.useState("");
+  const [author, setAuthor] = useState("");
   const onAuthorChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     setAuthor(value);
-    filterBooks(language, value, genre, props.setBooks);
   };
-  const [genre, setGenre] = React.useState("");
+  const [genre, setGenre] = useState("");
   const onGenreChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     setGenre(value);
-    filterBooks(language, author, value, props.setBooks);
   };
 
   useEffect(() => {
+    fetchCategories(setCategories);
     filterBooks(language, author, genre, props.setBooks);
-  }, []);
+  }, [language, author, genre]);
 
   // TODO: make hardcoded values dynamic based on data or get them via an API call
   return (
@@ -70,8 +83,11 @@ export const ShopFilter = (props: {
           onChange={onLanguageChange}
         >
           <option value="">All Languages</option>
-          <option value="English">English</option>
-          <option value="German">German</option>
+          {categories.language.map((language, i) => (
+            <option key={i} value={language}>
+              {language}
+            </option>
+          ))}
         </select>
       </div>
       <div className="col-sm-4">
@@ -84,17 +100,11 @@ export const ShopFilter = (props: {
           onChange={onAuthorChange}
         >
           <option value="">All Authors</option>
-          <option value="James Gleick">James Gleick</option>
-          <option value="Albert Camus">Albert Camus</option>
-          <option value="Benedict Wells">Benedict Wells</option>
-          <option value="Rutger Bregman">Rutger Bregman</option>
-          <option value="Andrew Hodges">Andrew Hodges</option>
-          <option value="Sylvia Nasar">Sylvia Nasar</option>
-          <option value="John Scalzi">John Scalzi</option>
-          <option value="Adrian Tchaikovsky">Adrian Tchaikovsky</option>
-          <option value="Jill Gutowitz">Jill Gutowitz</option>
-          <option value="Ashley Marie Farmer">Ashley Marie Farmer</option>
-          <option value="Laura Silverman">Laura Silverman</option>
+          {categories.author.map((author, i) => (
+            <option key={i} value={author}>
+              {author}
+            </option>
+          ))}
         </select>
       </div>
       <div className="col-sm-4">
@@ -107,10 +117,11 @@ export const ShopFilter = (props: {
           onChange={onGenreChange}
         >
           <option value="">All Genres</option>
-          <option value="science">Science</option>
-          <option value="novel">Novel</option>
-          <option value="essay">Essay</option>
-          <option value="biography">Biography</option>
+          {categories.genre.map((genre, i) => (
+            <option key={i} value={genre}>
+              {genre}
+            </option>
+          ))}
         </select>
       </div>
     </div>
