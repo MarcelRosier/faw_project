@@ -5,8 +5,8 @@ import cors from "cors";
 import { productRouter } from "./products/products.route.js";
 import { cartRouter } from "./cart/cart.route.js";
 import { userRouter } from "./users/users.route.js";
-import swaggerUi from "swagger-ui-express";
-import swaggerFile from "./swagger_output.json" assert { type: "json" };
+// import swaggerUi from "swagger-ui-express";
+// import swaggerFile from "./swagger_output.json" assert { type: "json" };
 
 const app = express();
 const PORT = 4040;
@@ -19,7 +19,7 @@ app.use(productRouter);
 app.use(bodyParser.json());
 app.use(cartRouter);
 app.use(userRouter);
-app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+// app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.get("/", (req, res) => res.send("Index page, Hello there!"));
 
