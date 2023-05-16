@@ -1,5 +1,5 @@
 import * as fs from "fs/promises";
-const PRODUCT_DB = "api/books.json";
+const PRODUCT_DB = "products/books.json";
 
 export async function getProducts(ids) {
   let data = JSON.parse(await fs.readFile(PRODUCT_DB));
