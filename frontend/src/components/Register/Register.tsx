@@ -59,7 +59,7 @@ export const Register = () => {
     return password.length > 0 ? undefined : "Password field can not be empty";
   };
   const validateName = (name: string) => {
-    return name.length > 0 ? undefined : "Name can not be empty";
+    return validator.isAlpha(name) ? undefined : "Invalid name";
   };
 
   const handleFirstName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -188,9 +188,7 @@ export const Register = () => {
                 onChange={handleFirstName}
                 required
               />
-              <div className="invalid-feedback">
-                First name field can not be empty!
-              </div>
+              <div className="invalid-feedback">Invalid first name!</div>
               <label className="form-label" htmlFor="first_name_label">
                 First Name
               </label>
@@ -205,9 +203,7 @@ export const Register = () => {
                 onChange={handleLastName}
                 required
               />
-              <div className="invalid-feedback">
-                Last name field can not be empty!
-              </div>
+              <div className="invalid-feedback">Invalid last name!</div>
               <label className="form-label" htmlFor="last_name_label">
                 Last Name
               </label>
