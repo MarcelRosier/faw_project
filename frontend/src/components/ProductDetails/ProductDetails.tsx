@@ -104,7 +104,7 @@ export const ProductDetails = () => {
               alt="Image not found"
             />
           </div>
-          <div className="col-md-6 col-sm-12">
+          <div className="col-md-6 col-sm-12 p-4">
             <div className="card w-100 p-4" style={{ padding: "30px" }}>
               <h2 id="bookname" className="mt-2">
                 {book.title}
