@@ -115,6 +115,10 @@ export const Register = () => {
   const anyErrors = () => {
     return Object.values(errors).some((field) => field !== undefined);
   };
+
+  const handleCancel = () => {
+    navigate("/shop");
+  };
   const handleRegister = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     // validate email and password
@@ -260,6 +264,14 @@ export const Register = () => {
               onClick={handleRegister}
             >
               Sign up
+            </button>
+            <button
+              type="submit"
+              className="btn btn-danger btn-block mb-4"
+              onClick={handleCancel}
+              style={{ maxWidth: "10%" }}
+            >
+              X
             </button>
           </div>
         </form>

@@ -64,6 +64,11 @@ export const Login = () => {
       ...{ password: validatePassword(event.target.value) },
     }));
   };
+
+  const handleCancel = () => {
+    navigate("/shop");
+  };
+
   const handleLogin = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
@@ -143,6 +148,14 @@ export const Login = () => {
               onClick={handleLogin}
             >
               Log in
+            </button>
+            <button
+              type="submit"
+              className="btn btn-danger btn-block mb-4"
+              onClick={handleCancel}
+              style={{ maxWidth: "10%" }}
+            >
+              X
             </button>
           </div>
 
